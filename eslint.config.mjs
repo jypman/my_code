@@ -24,6 +24,7 @@ const eslintConfig = defineConfig([
           argsIgnorePattern: '^_',
         },
       ],
+      '@typescript-eslint/consistent-type-imports': 'error',
     },
   },
 ]);
