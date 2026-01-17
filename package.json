@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "husky",
     "dev": "next dev",
-    "dev:watch": "concurrently 'yarn dev' && 'yarn typecheck:watch'",
+    "dev:watch": "concurrently 'yarn dev' 'yarn typecheck:watch'",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
