@@ -5,7 +5,6 @@ import { useModalStore, useBottomSheetStore } from '@/hooks/store/useUIStore';
 
 import Modal from '@/components/ui/common/Modal';
 import Toast from '@/components/ui/common/Toast';
-import BottomSheet from '@/components/ui/common/BottomSheet';
 
 interface ICommonProviderProps {
   children: React.ReactNode;
@@ -83,7 +82,6 @@ function UIProvider({ children }: ICommonProviderProps): React.ReactElement {
       {children}
       <Modal />
       <Toast />
-      <BottomSheet />
     </>
   );
 }
