@@ -38,6 +38,8 @@ Input.TextField = forwardRef((props: TextFieldProps, ref: ForwardedRef<HTMLInput
 
 Input.TextField.displayName = 'Input.TextField';
 
+const { grey700, white, red600, blue500, greyOpacity200 } = colors;
+
 const InputContainer = styled.div`
   width: 100%;
 `;
@@ -48,7 +50,7 @@ const Label = styled.label`
   font-size: 15px;
   font-weight: 500;
   line-height: 1.6;
-  color: ${colors.grey700};
+  color: ${grey700};
 `;
 
 const InputComponent = styled.input<TextFieldProps>`
@@ -60,17 +62,17 @@ const InputComponent = styled.input<TextFieldProps>`
   outline: none;
   border: none;
   border-radius: 8px;
-  background-color: ${colors.white};
+  background-color: ${white};
   transition:
     background 0.2s ease,
     color 0.1s ease,
     box-shadow 0.2s ease;
 
   ${({ isError = false }: TextFieldProps): RuleSet<TextFieldProps> => css`
-    box-shadow: inset 0 0 0 1px ${isError ? colors.red600 : colors.greyOpacity200};
+    box-shadow: inset 0 0 0 1px ${isError ? red600 : greyOpacity200};
 
     &:focus {
-      box-shadow: inset 0 0 0 2px ${isError ? colors.red600 : colors.blue500};
+      box-shadow: inset 0 0 0 2px ${isError ? red600 : blue500};
     }
   `}
 `;

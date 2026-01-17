@@ -11,19 +11,21 @@ function Button(props: Props): React.ReactElement {
   return <ButtonComponent {...props} />;
 }
 
+const { grey50, blue500, blue600, grey700, grey100, grey300 } = colors;
+
 const TYPE_VARIANTS = {
   primary: {
-    color: colors.grey50,
-    backgroundColor: colors.blue500,
+    color: grey50,
+    backgroundColor: blue500,
     '&:hover': {
-      backgroundColor: colors.blue600,
+      backgroundColor: blue600,
     },
   },
   secondary: {
-    color: colors.grey700,
-    backgroundColor: colors.grey100,
+    color: grey700,
+    backgroundColor: grey100,
     '&:hover': {
-      backgroundColor: colors.grey300,
+      backgroundColor: grey300,
     },
   },
 };
