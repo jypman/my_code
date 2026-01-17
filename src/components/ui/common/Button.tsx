@@ -4,7 +4,7 @@ import colors from '@/constants/colors';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary';
-  size?: 'medium' | 'large' | 'small';
+  size?: 'full' | 'large' | 'medium' | 'small';
 }
 
 function Button(props: Props): React.ReactElement {
@@ -42,6 +42,11 @@ const SIZE_VARIANTS = {
   large: {
     fontSize: '17px',
     padding: '11px 22px',
+  },
+  full: {
+    fontSize: '17px',
+    padding: '11px 22px',
+    width: '100%',
   },
 };
 

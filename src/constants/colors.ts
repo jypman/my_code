@@ -124,6 +124,7 @@ const colors = {
   darkLayeredBackground: inverseGrey50,
   floatBackground: white,
   darkFloatBackground: inverseGrey100,
+  dimmedBackground: 'rgba(0, 0, 0, 0.5)',
 };
 
 export default colors;

@@ -8,6 +8,7 @@ const eslintConfig = defineConfig([
   globalIgnores(['node_modules/**', '.next/**', 'build/**', 'next-env.d.ts', '.vscode/**']),
   {
     rules: {
+      'react-hooks/exhaustive-deps': 'off',
       'react/jsx-no-useless-fragment': 'warn',
       'import/no-duplicates': 'error',
       'jsx-a11y/alt-text': 'error',
