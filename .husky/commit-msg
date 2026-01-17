@@ -1,0 +1,16 @@
+echo '🚀 커밋메세지 포맷 검사중...✨'
+# 1. 커밋 메시지 파일에서 내용 읽기
+commit_msg_file=$1
+commit_msg=$(cat "$commit_msg_file")
+
+# 2. 정규식 패턴 설정
+# 예: feat/APTI-4994: test
+pattern="^(feat|fix|chore|refactor|test): .+$"
+
+# 3. 검사
+if ! echo "$commit_msg" | grep -qE "$pattern"; then
+  echo "[알림] 커밋 메시지 형식이 올바르지 않습니다."
+  echo "👉 예시: feat/APTI-4994: test"
+  
+  exit 1
+fi

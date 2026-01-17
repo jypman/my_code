@@ -3,23 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "typecheck:i": "tsc --noEmit --incremental",
+    "typecheck:watch": "tsc --noEmit --incremental -w"
   },
   "dependencies": {
+    "@tanstack/react-query": "5.90.18",
+    "axios": "1.13.2",
     "next": "16.1.3",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "zustand": "5.0.10"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@tanstack/react-query-devtools": "5.91.2",
+    "@types/node": "20",
+    "@types/react": "19",
+    "@types/react-dom": "19",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.3",
-    "typescript": "^5"
+    "eslint": "9",
+    "eslint-config-next": "^16.1.3",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "husky": "9.1.7",
+    "prettier": "3.8.0",
+    "typescript": "5.9.3"
   }
 }
