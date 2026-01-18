@@ -8,9 +8,9 @@ import {
 } from 'react';
 import styled, { css, type RuleSet } from 'styled-components';
 import colors from '@/constants/colors';
+import typhography from '@/constants/typhography';
 
 interface InputProps extends HTMLAttributes<HTMLDivElement> {
-  isError?: boolean;
   label?: React.ReactNode;
   children: React.ReactElement;
 }
@@ -39,6 +39,7 @@ Input.TextField = forwardRef((props: TextFieldProps, ref: ForwardedRef<HTMLInput
 Input.TextField.displayName = 'Input.TextField';
 
 const { grey700, white, red600, blue500, greyOpacity200 } = colors;
+const { fontWeightMedium } = typhography;
 
 const InputContainer = styled.div`
   width: 100%;
@@ -48,12 +49,12 @@ const Label = styled.label`
   display: inline-block;
   padding: 5px 0;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: ${fontWeightMedium};
   line-height: 1.6;
   color: ${grey700};
 `;
 
-const InputComponent = styled.input<TextFieldProps>`
+const InputComponent = styled.input.withConfig({ shouldForwardProp: (prop) => prop !== 'isError' })<TextFieldProps>`
   width: 100%;
   padding: 0 18px;
   font-size: 15px;

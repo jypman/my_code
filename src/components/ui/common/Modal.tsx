@@ -2,7 +2,7 @@
 
 import styled, { css, type RuleSet } from 'styled-components';
 import { useModalStore } from '@/hooks/store/useUIStore';
-import type { IVisibleUIProps } from '@/types/common/index.types';
+import type { IVisibleUI } from '@/types/common/index.types';
 import zIndex from '@/constants/zIndex';
 import typhography from '@/constants/typhography';
 import colors from '@/constants/colors';
@@ -17,7 +17,7 @@ function Modal(): React.ReactElement {
   };
 
   return (
-    <ModalContainer $isShow={isShow}>
+    <ModalContainer isShow={isShow}>
       <ModalWrap>
         <TitleWrapper>
           {title && <Title>{title}</Title>}
@@ -42,7 +42,7 @@ const { priority, modal } = zIndex;
 const { unit8, unit20, unit24, unit28, fontWeightSemiBold, fontWeightRegular } = typhography;
 const { grey50, black, dimmedBackground } = colors;
 
-const ModalContainer = styled.div<IVisibleUIProps>`
+const ModalContainer = styled.div.withConfig({ shouldForwardProp: (prop) => prop !== 'isShow' })<IVisibleUI>`
   display: none;
   position: fixed;
   top: 0;
@@ -51,8 +51,8 @@ const ModalContainer = styled.div<IVisibleUIProps>`
   height: 100%;
   z-index: ${modal};
 
-  ${({ $isShow = false }: IVisibleUIProps): RuleSet<IVisibleUIProps> | false =>
-    $isShow &&
+  ${({ isShow = false }: IVisibleUI): RuleSet<IVisibleUI> | false =>
+    isShow &&
     css`
       display: block;
     `}

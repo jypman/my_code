@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import { useToastStore } from '@/hooks/store/useUIStore';
 import typhography from '@/constants/typhography';
 import colors from '@/constants/colors';
-import type { IVisibleUIProps } from '@/types/common/index.types';
+import type { IVisibleUI } from '@/types/common/index.types';
 import zIndex from '@/constants/zIndex';
 
 const TOAST_DURATION_MS = 3_000;
@@ -35,7 +35,7 @@ function Toast(): React.ReactElement {
   useEffect(clearToastTimeout, []);
 
   return (
-    <ToastContainer $isShow={isShow}>
+    <ToastContainer isShow={isShow}>
       <ToastContent>{message}</ToastContent>
     </ToastContainer>
   );
@@ -46,7 +46,7 @@ const { grey50, black } = colors;
 
 const { toast } = zIndex;
 
-const ToastContainer = styled.div<IVisibleUIProps>`
+const ToastContainer = styled.div.withConfig({ shouldForwardProp: (prop) => prop !== 'isShow' })<IVisibleUI>`
   visibility: hidden;
   opacity: 0;
   position: fixed;
@@ -65,8 +65,8 @@ const ToastContainer = styled.div<IVisibleUIProps>`
   background: ${black};
   transition: all 0.3s;
   z-index: ${toast};
-  ${({ $isShow = false }: IVisibleUIProps): RuleSet<IVisibleUIProps> | false =>
-    $isShow &&
+  ${({ isShow = false }: IVisibleUI): RuleSet<IVisibleUI> | false =>
+    isShow &&
     css`
       visibility: visible;
       opacity: 1;

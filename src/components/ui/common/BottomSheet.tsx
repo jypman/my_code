@@ -5,7 +5,7 @@ import { useBottomSheetStore } from '@/hooks/store/useUIStore';
 import zIndex from '@/constants/zIndex';
 import typhography from '@/constants/typhography';
 import colors from '@/constants/colors';
-import type { IVisibleUIProps } from '@/types/common/index.types';
+import type { IVisibleUI } from '@/types/common/index.types';
 
 function BottomSheet(): React.ReactElement {
   const { isShow, content, title, className = '', hideBottomSheet } = useBottomSheetStore();
@@ -13,8 +13,8 @@ function BottomSheet(): React.ReactElement {
   const isVisible: boolean = isShow && !!content;
 
   return (
-    <BottomSheetContainer $isShow={isVisible} className={className}>
-      <BottomSheetWrap $isShow={isVisible}>
+    <BottomSheetContainer isShow={isVisible} className={className}>
+      <BottomSheetWrap isShow={isVisible}>
         {title && (
           <Header>
             <Title>{title}</Title>
@@ -31,7 +31,7 @@ const { bottomSheet, priority } = zIndex;
 const { unit8, unit16, layoutPadding, fontWeightSemiBold } = typhography;
 const { grey50, black, dimmedBackground } = colors;
 
-const BottomSheetContainer = styled.div<IVisibleUIProps>`
+const BottomSheetContainer = styled.div.withConfig({ shouldForwardProp: (prop) => prop !== 'isShow' })<IVisibleUI>`
   visibility: hidden;
   opacity: 0;
   position: fixed;
@@ -44,15 +44,15 @@ const BottomSheetContainer = styled.div<IVisibleUIProps>`
   z-index: ${bottomSheet};
   transition: all 0.3s;
 
-  ${({ $isShow = false }: IVisibleUIProps): RuleSet<IVisibleUIProps> | false =>
-    $isShow &&
+  ${({ isShow = false }: IVisibleUI): RuleSet<IVisibleUI> | false =>
+    isShow &&
     css`
       visibility: visible;
       opacity: 1;
     `}
 `;
 
-const BottomSheetWrap = styled.div<IVisibleUIProps>`
+const BottomSheetWrap = styled.div<IVisibleUI>`
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -68,8 +68,8 @@ const BottomSheetWrap = styled.div<IVisibleUIProps>`
   z-index: ${priority};
   transition: all 0.3s;
 
-  ${({ $isShow = false }: IVisibleUIProps): RuleSet<IVisibleUIProps> | false =>
-    $isShow &&
+  ${({ isShow = false }: IVisibleUI): RuleSet<IVisibleUI> | false =>
+    isShow &&
     css`
       bottom: 0;
     `}

@@ -40,7 +40,3 @@ export interface IBottomSheetStore extends IBottomSheetContent, IVisibleUI {
   showBottomSheet: (content: IBottomSheetContent) => void;
   hideBottomSheet: () => void;
 }
-
-export interface IVisibleUIProps {
-  $isShow: boolean;
-}

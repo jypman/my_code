@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes } from 'react';
 import styled, { css, type RuleSet } from 'styled-components';
 import colors from '@/constants/colors';
+import typhography from '@/constants/typhography';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary';
@@ -50,7 +51,11 @@ const SIZE_VARIANTS = {
   },
 };
 
-const ButtonComponent = styled.button<Props>`
+const { fontWeightSemiBold } = typhography;
+
+const ButtonComponent = styled.button.withConfig({
+  shouldForwardProp: (prop) => prop !== 'variant' && prop !== 'size',
+})<Props>`
   outline: none;
   border: 0 solid transparent;
   border-radius: 7px;
@@ -58,7 +63,7 @@ const ButtonComponent = styled.button<Props>`
   transition:
     background 0.2s ease,
     color 0.1s ease;
-  font-weight: 600;
+  font-weight: ${fontWeightSemiBold};
   line-height: 26px;
   ${({ variant = 'primary', size = 'medium' }: Props): RuleSet<Props> => css`
     ${TYPE_VARIANTS[variant]}
