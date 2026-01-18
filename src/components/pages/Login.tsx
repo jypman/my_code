@@ -7,6 +7,7 @@ import colors from '@/constants/colors';
 import typhography from '@/constants/typhography';
 import { useModalStore } from '@/hooks/store/useUIStore';
 import type { ILoginInputInfo } from '@/types/users/index.types';
+import { useUserStore } from '@/hooks/store/useUserStore';
 
 import PageLayout from '@/components/ui/common/PageLayout';
 import Input from '@/components/ui/common/Input';
@@ -34,6 +35,7 @@ const preventDefault = (e: React.FormEvent<HTMLFormElement>): void => {
 function Login(): React.ReactElement {
   const isTriedLoginRef = useRef<boolean>(false);
   const { showModal } = useModalStore();
+  const { setUserInfo } = useUserStore();
   const router = useRouter();
   const [inputValue, setInputValue] = useState<ILoginInputInfo>(defaultInputInfo);
 
@@ -76,6 +78,9 @@ function Login(): React.ReactElement {
       });
       return;
     }
+
+    const mockPoint = 1_000_000;
+    setUserInfo({ nickName: inputValue.id.value, point: mockPoint });
 
     router.push('/');
   };

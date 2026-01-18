@@ -10,6 +10,7 @@ import colors from '@/constants/colors';
 import typhography from '@/constants/typhography';
 import zIndex from '@/constants/zIndex';
 import { useToastStore } from '@/hooks/store/useUIStore';
+import { useUserStore } from '@/hooks/store/useUserStore';
 import { getTypeLabel, getTypeColor } from '@/utils/books';
 
 import PageLayout from '@/components/ui/common/PageLayout';
@@ -18,6 +19,7 @@ import ScrollToTopButton from '@/components/ui/common/ScrollToTopButton';
 
 function Books(): React.ReactElement {
   const { showToast } = useToastStore();
+  const { nickName, point } = useUserStore();
   const router = useRouter();
 
   const [selectedFilters, setSelectedFilters] = useState<IBookType[]>([]);
@@ -77,12 +79,31 @@ function Books(): React.ReactElement {
 
   useEffect(scrollToTop, [selectedFilters]);
 
+  const hasUserInfo = !!nickName;
+
   return (
     <PageLayout>
       <StickyHeader>
-        <Txt typography="h4" color={black}>
-          작품 목록
-        </Txt>
+        <HeaderTop>
+          <Txt typography="h4" color={black}>
+            작품 목록
+          </Txt>
+          {hasUserInfo && (
+            <UserInfo>
+              <Txt typography="p" color={grey900} style={{ fontWeight: 'bold' }}>
+                {nickName}님
+              </Txt>
+              <PointInfo>
+                <Txt typography="p" color={grey600} style={{ fontSize: '13px' }}>
+                  보유 포인트
+                </Txt>
+                <Txt typography="p" color={blue500} style={{ fontWeight: 'bold' }}>
+                  {point.toLocaleString()}P
+                </Txt>
+              </PointInfo>
+            </UserInfo>
+          )}
+        </HeaderTop>
         <FilterContainer>
           <FilterButton $isActive={selectedFilters.includes('webToon')} onClick={() => handleFilterChange('webToon')}>
             웹툰
@@ -123,7 +144,7 @@ function Books(): React.ReactElement {
   );
 }
 
-const { black, white, grey200, grey900, grey600 } = colors;
+const { black, white, grey200, grey900, grey600, blue500 } = colors;
 const { unit4, unit8, unit12, unit20, fontWeightBold, fontWeightSemiBold } = typhography;
 const { priority } = zIndex;
 
@@ -135,11 +156,28 @@ const StickyHeader = styled.div`
   padding: ${unit20} 0;
   border-bottom: 1px solid ${grey200};
   display: flex;
+  flex-direction: column;
+  gap: ${unit12};
+  margin-bottom: ${unit20};
+`;
+
+const HeaderTop = styled.div`
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${unit20};
-  flex-wrap: wrap;
-  gap: 10px;
+`;
+
+const UserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+`;
+
+const PointInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
 `;
 
 const FilterContainer = styled.div`

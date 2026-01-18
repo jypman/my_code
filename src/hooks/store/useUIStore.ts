@@ -5,10 +5,8 @@ import type {
   IBottomSheetStore,
   IModalContent,
   IBottomSheetContent,
-  ITopModalContent,
 } from '@/types/common/index.types';
 
-// 각각 독립적인 store
 export const useModalStore = create<IModalStore>((set) => ({
   isShow: false,
   title: null,
