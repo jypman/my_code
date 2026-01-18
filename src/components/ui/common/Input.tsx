@@ -15,12 +15,15 @@ interface InputProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactElement;
 }
 
-function Input({ label, children, id, ...props }: InputProps): React.ReactElement {
+function Input({ label, children, ...props }: InputProps): React.ReactElement {
   const child = Children.only(children);
+  const isError: boolean = (child as React.ReactElement<TextFieldProps>).props.isError ?? false;
 
   return (
     <InputContainer>
-      <Label htmlFor={id}>{label}</Label>
+      <Label htmlFor={props.id} isError={isError}>
+        {label}
+      </Label>
       {cloneElement(child, {
         ...props,
       })}
@@ -32,36 +35,39 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   isError?: boolean;
 }
 
-Input.TextField = forwardRef((props: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => {
-  return <InputComponent ref={ref} {...props} />;
+Input.TextField = forwardRef(({ id, ...resProps }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => {
+  return <InputComponent id={id} ref={ref} {...resProps} />;
 });
 
 Input.TextField.displayName = 'Input.TextField';
 
-const { grey700, white, red600, blue500, greyOpacity200 } = colors;
+const { grey700, white, red400, greyOpacity200 } = colors;
 const { fontWeightMedium } = typhography;
 
 const InputContainer = styled.div`
   width: 100%;
 `;
 
-const Label = styled.label`
+const Label = styled.label.withConfig({ shouldForwardProp: (prop) => prop !== 'isError' })<TextFieldProps>`
   display: inline-block;
   padding: 5px 0;
   font-size: 15px;
   font-weight: ${fontWeightMedium};
   line-height: 1.6;
-  color: ${grey700};
+
+  ${({ isError = false }: TextFieldProps): RuleSet<TextFieldProps> => css`
+    color: ${isError ? red400 : grey700};
+  `}
 `;
 
 const InputComponent = styled.input.withConfig({ shouldForwardProp: (prop) => prop !== 'isError' })<TextFieldProps>`
   width: 100%;
   padding: 0 18px;
+  box-sizing: border-box;
   font-size: 15px;
   line-height: 48px;
   margin: 0;
   outline: none;
-  border: none;
   border-radius: 8px;
   background-color: ${white};
   transition:
@@ -70,11 +76,7 @@ const InputComponent = styled.input.withConfig({ shouldForwardProp: (prop) => pr
     box-shadow 0.2s ease;
 
   ${({ isError = false }: TextFieldProps): RuleSet<TextFieldProps> => css`
-    box-shadow: inset 0 0 0 1px ${isError ? red600 : greyOpacity200};
-
-    &:focus {
-      box-shadow: inset 0 0 0 2px ${isError ? red600 : blue500};
-    }
+    border: 1px solid ${isError ? red400 : greyOpacity200};
   `}
 `;
 

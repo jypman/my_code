@@ -8,15 +8,16 @@ export default function withAuth<P extends object>(Component: React.ComponentTyp
     const router = useRouter();
     const [isVerified, setIsVerified] = useState<boolean>(false);
 
-    useEffect(() => {
+    const verifyUser = (): void => {
       const userInfo = sessionStorage.getItem('userInfo');
-
       if (!userInfo) {
         router.replace('/login');
       } else {
         setIsVerified(true);
       }
-    }, []);
+    };
+
+    useEffect(verifyUser, []);
 
     if (!isVerified) {
       return null;

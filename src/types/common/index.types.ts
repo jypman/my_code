@@ -52,3 +52,8 @@ export interface IUseIntersectionObserverResult {
   targetRef: React.RefObject<HTMLDivElement | null>;
   inView: boolean;
 }
+
+export interface IInputValidation {
+  value: string;
+  isError: boolean;
+}

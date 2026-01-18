@@ -39,7 +39,7 @@ function Modal(): React.ReactElement {
 }
 
 const { priority, modal } = zIndex;
-const { unit8, unit20, unit24, unit28, fontWeightSemiBold, fontWeightRegular } = typhography;
+const { unit8, unit20, unit24, fontWeightSemiBold, fontWeightRegular } = typhography;
 const { grey50, black, dimmedBackground } = colors;
 
 const ModalContainer = styled.div.withConfig({ shouldForwardProp: (prop) => prop !== 'isShow' })<IVisibleUI>`
@@ -65,7 +65,7 @@ const ModalWrap = styled.div`
   left: 0;
   right: 0;
   transform: translateY(-50%);
-  margin: 0 ${unit28};
+  margin: 0 30%;
   display: flex;
   flex-direction: column;
   gap: ${unit20};
