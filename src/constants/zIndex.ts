@@ -1,9 +1,8 @@
 const zIndex = {
   priority: 1,
-  dim: 100,
+  bottomSheet: 100,
   modal: 200,
-  bottomSheet: 300,
-  toast: 400,
+  toast: 300,
 };
 
 export default zIndex;

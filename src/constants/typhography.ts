@@ -15,9 +15,7 @@ const typhography = {
   fontWeightSemiBold: 600,
   fontWeightBold: 700,
 
-  zIndexLow: 1,
-  zIndexMiddle: 2,
-  zIndexHigh: 3,
+  layoutPadding: '4%',
 };
 
 export default typhography;
