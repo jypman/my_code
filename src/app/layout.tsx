@@ -1,4 +1,5 @@
 import StyledComponentsRegistry from '@/lib/StyledComponentRegistry';
+import MSWProvider from '@/lib/MSWProvider';
 import UIProviders from '@/providers/UIProviders';
 
 export default function RootLayout({
@@ -10,7 +11,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StyledComponentsRegistry>
-          <UIProviders>{children}</UIProviders>
+          <MSWProvider>
+            <UIProviders>{children}</UIProviders>
+          </MSWProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
