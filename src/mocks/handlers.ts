@@ -2,13 +2,11 @@ import { http, HttpResponse } from 'msw';
 import type { DayType, IBookDetail, IBook, IComic, IWebtoon, IWebNovel } from '@/types/books/api.types';
 
 const generateBooks = (): Array<IComic | IWebtoon | IWebNovel> => {
-  const types: Array<IBookDetail['type']> = ['webToon', 'comic', 'webNovel'];
   const days: DayType[] = ['월', '화', '수', '목', '금', '토', '일'];
   const totalBooks = 50;
 
   const books = Array.from({ length: totalBooks }, (_, i) => {
     const startIndex = i + 1;
-    const typeCount = types.length;
     const book: IBook = {
       id: i.toString(),
       title: `테스트 도서 ${startIndex}`,
@@ -78,9 +76,18 @@ export const handlers = [
     const book = allBooks.find((b) => b.id === id);
 
     if (!book) {
-      return new HttpResponse(null, { status: 404, statusText: '도서를 찾을 수 없습니다.' });
+      const errorObj = {
+        errorCode: 'BOOK_NOT_FOUND',
+        message: '해당하는 도서를 찾을 수 없습니다.',
+      };
+      return new HttpResponse(errorObj, { status: 404 });
     }
 
-    return HttpResponse.json(book);
+    const detail: IBookDetail = {
+      ...book,
+      desc: '테스트 도서 상세 설명입니다.',
+    };
+
+    return HttpResponse.json(detail);
   }),
 ];

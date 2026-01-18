@@ -26,3 +26,14 @@ export interface IBookDetail extends IBook {
   desc: string;
   type: IComic['type'] | IWebtoon['type'] | IWebNovel['type'];
 }
+
+export interface IBookError {
+  errorCode: string;
+  errorMessage: string;
+}
+
+export interface IBookListReqParams {
+  page: number;
+  limit: number;
+  filter?: IBookDetail['type'];
+}
