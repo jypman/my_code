@@ -12,6 +12,7 @@ import { useToastStore } from '@/hooks/store/useUIStore';
 
 import PageLayout from '@/components/ui/common/PageLayout';
 import Txt from '@/components/ui/common/Txt';
+import ScrollToTopButton from '@/components/ui/common/ScrollToTopButton';
 
 const defaultPayload: IBookListReqParams = {
   page: 1,
@@ -34,7 +35,7 @@ function Books(): React.ReactElement {
     showToast('판권이 만료되었어요!');
   };
 
-  const handleNextPage = ({ isExpired, id }: IComic | IWebNovel | IWebtoon): void => {
+  const handleNextPage = (id: string, isExpired: boolean): void => {
     if (isExpired) {
       showExpiredMessage();
       return;
@@ -55,23 +56,28 @@ function Books(): React.ReactElement {
         책 목록
       </Txt>
       <Grid>
-        {books.map((book) => (
-          <BookCard key={book.id} onClick={() => handleNextPage(book)}>
-            <ImageWrapper>
-              <BookImage src={book.img} alt={book.title} loading="lazy" />
-              {book.type !== 'comic' && book.days && <DayBadge>{book.days}요일 연재</DayBadge>}
-            </ImageWrapper>
-            <BookInfo>
-              <BookTypeBadge $type={book.type}>{getTypeLabel(book.type)}</BookTypeBadge>
-              <BookTitle>{book.title}</BookTitle>
-              <BookPrice>{book.price.toLocaleString()}원</BookPrice>
-              {book.isExpired && <ExpiredBadge>만료됨</ExpiredBadge>}
-            </BookInfo>
-          </BookCard>
-        ))}
+        {books.map((book) => {
+          const { id, img, title, type, isExpired, price } = book;
+          const isDays = 'days' in book;
+          return (
+            <BookCard key={id} onClick={() => handleNextPage(id, isExpired)}>
+              <ImageWrapper>
+                <BookImage src={img} alt={title} loading="lazy" />
+                {isDays && <DayBadge>{book.days}요일 연재</DayBadge>}
+              </ImageWrapper>
+              <BookInfo>
+                <BookTypeBadge $type={type}>{getTypeLabel(type)}</BookTypeBadge>
+                <BookTitle>{title}</BookTitle>
+                <BookPrice>{price.toLocaleString()}원</BookPrice>
+                {isExpired && <ExpiredBadge>만료됨</ExpiredBadge>}
+              </BookInfo>
+            </BookCard>
+          );
+        })}
       </Grid>
 
       <Observer ref={targetRef}>{isFetchingNextPage && <StatusMessage>Loading more...</StatusMessage>}</Observer>
+      <ScrollToTopButton />
     </PageLayout>
   );
 }
