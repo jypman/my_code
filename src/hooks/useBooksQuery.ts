@@ -6,7 +6,7 @@ import {
   type UseInfiniteQueryResult,
   type InfiniteData,
 } from '@tanstack/react-query';
-import type { IBookListReqParams, IBookDetail, IBookError, IComic, IWebNovel, IWebtoon } from '@/types/books/api.types';
+import type { IBookListReqParams, IBookError, IComic, IWebNovel, IWebtoon } from '@/types/books/api.types';
 import { getBookDetail, getBookList, handleResInQueryFn } from '@/actions/books';
 
 export const booksQueryKey = {
@@ -41,7 +41,7 @@ export const useGetBookListQuery = (
   });
 };
 
-export const useGetBookDetailQuery = (id: string): UseQueryResult<IBookDetail, IBookError> => {
+export const useGetBookDetailQuery = (id: string): UseQueryResult<IComic | IWebNovel | IWebtoon, IBookError> => {
   return useQuery({
     queryKey: [booksQueryKey.detail, id],
     queryFn: async () => {

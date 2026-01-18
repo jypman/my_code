@@ -6,6 +6,7 @@ export interface IBook {
   img: string;
   isExpired: boolean;
   price: number;
+  desc: string;
 }
 
 export interface IComic extends IBook {
@@ -23,11 +24,6 @@ export interface IWebNovel extends IBook {
 }
 
 export type IBookType = 'comic' | 'webToon' | 'webNovel';
-
-export interface IBookDetail extends IBook {
-  desc: string;
-  type: IBookType;
-}
 
 export interface IBookError {
   errorCode: string;

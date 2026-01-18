@@ -10,6 +10,7 @@ import colors from '@/constants/colors';
 import typhography from '@/constants/typhography';
 import zIndex from '@/constants/zIndex';
 import { useToastStore } from '@/hooks/store/useUIStore';
+import { getTypeLabel, getTypeColor } from '@/utils/books';
 
 import PageLayout from '@/components/ui/common/PageLayout';
 import Txt from '@/components/ui/common/Txt';
@@ -122,35 +123,9 @@ function Books(): React.ReactElement {
   );
 }
 
-const { black, white, green500, blue500, orange500, grey200, grey900, grey600 } = colors;
+const { black, white, grey200, grey900, grey600 } = colors;
 const { unit4, unit8, unit12, unit20, fontWeightBold, fontWeightSemiBold } = typhography;
 const { priority } = zIndex;
-
-const getTypeLabel = (type: IBookType): string => {
-  switch (type) {
-    case 'webToon':
-      return '웹툰';
-    case 'webNovel':
-      return '웹소설';
-    case 'comic':
-      return '만화';
-    default:
-      return '';
-  }
-};
-
-const getTypeColor = (type: IBookType): string => {
-  switch (type) {
-    case 'webToon':
-      return green500;
-    case 'webNovel':
-      return blue500;
-    case 'comic':
-      return orange500;
-    default:
-      return '';
-  }
-};
 
 const StickyHeader = styled.div`
   position: sticky;

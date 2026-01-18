@@ -1,7 +1,7 @@
 import type { AxiosError, AxiosResponse } from 'axios';
 import { books } from '@/api/books';
 import { booksHttp } from '@/lib/axios-instance/books';
-import type { IComic, IWebtoon, IWebNovel, IBookError, IBookListReqParams, IBookDetail } from '@/types/books/api.types';
+import type { IComic, IWebtoon, IWebNovel, IBookError, IBookListReqParams } from '@/types/books/api.types';
 
 const ERROR_RES: IBookError = {
   errorCode: 'UNKNOWN_ERROR',
@@ -43,7 +43,7 @@ export async function getBookList(
   }
 }
 
-export async function getBookDetail(id: string): Promise<IBookDetail | IBookError> {
+export async function getBookDetail(id: string): Promise<IComic | IWebtoon | IWebNovel | IBookError> {
   try {
     const res = await booksHttp.get(detail.replace(':id', id));
     return handleApiRes(res);
