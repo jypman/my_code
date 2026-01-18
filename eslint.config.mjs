@@ -5,7 +5,7 @@ import nextTs from 'eslint-config-next/typescript';
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  globalIgnores(['node_modules/**', '.next/**', 'build/**', 'next-env.d.ts', '.vscode/**']),
+  globalIgnores(['node_modules/**', '.next/**', 'build/**', 'next-env.d.ts', '.vscode/**', 'public/**']),
   {
     rules: {
       'react-hooks/exhaustive-deps': 'off',

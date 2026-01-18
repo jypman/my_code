@@ -1,28 +1,36 @@
 'use client';
 
-import { useEffect } from 'react';
-import styled from 'styled-components';
+import { useEffect, useState, useMemo } from 'react';
+import styled, { css, type RuleSet } from 'styled-components';
 import { useRouter } from 'next/navigation';
 import { useGetBookListQuery } from '@/hooks/useBooksQuery';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import type { IBookListReqParams, IComic, IWebNovel, IWebtoon, IBookType } from '@/types/books/api.types';
 import colors from '@/constants/colors';
 import typhography from '@/constants/typhography';
+import zIndex from '@/constants/zIndex';
 import { useToastStore } from '@/hooks/store/useUIStore';
 
 import PageLayout from '@/components/ui/common/PageLayout';
 import Txt from '@/components/ui/common/Txt';
 import ScrollToTopButton from '@/components/ui/common/ScrollToTopButton';
 
-const defaultPayload: IBookListReqParams = {
-  page: 1,
-  limit: 20,
-};
-
 function Books(): React.ReactElement {
   const { showToast } = useToastStore();
   const router = useRouter();
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetBookListQuery(defaultPayload);
+
+  const [selectedFilters, setSelectedFilters] = useState<IBookType[]>([]);
+
+  const payload: IBookListReqParams = useMemo<IBookListReqParams>(
+    () => ({
+      page: 1,
+      limit: 20,
+      filter: selectedFilters.join('|'),
+    }),
+    [selectedFilters],
+  );
+
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetBookListQuery(payload);
 
   const { targetRef, inView } = useIntersectionObserver({
     threshold: 0.5,
@@ -30,6 +38,16 @@ function Books(): React.ReactElement {
   });
 
   const books: Array<IComic | IWebNovel | IWebtoon> = data?.pages.flatMap((page) => page) || [];
+
+  const handleFilterChange = (type: IBookType): void => {
+    setSelectedFilters((prev) => {
+      if (prev.includes(type)) {
+        return prev.filter((t) => t !== type);
+      } else {
+        return [...prev, type];
+      }
+    });
+  };
 
   const showExpiredMessage = (): void => {
     showToast('판권이 만료되었어요!');
@@ -44,17 +62,39 @@ function Books(): React.ReactElement {
     router.push(`/${id}`);
   };
 
+  const scrollToTop = (): void => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
     }
   }, [inView, hasNextPage]);
 
+  useEffect(scrollToTop, [selectedFilters]);
+
   return (
     <PageLayout>
-      <Txt typography="h4" color={black}>
-        책 목록
-      </Txt>
+      <StickyHeader>
+        <Txt typography="h4" color={black}>
+          작품 목록
+        </Txt>
+        <FilterContainer>
+          <FilterButton $isActive={selectedFilters.includes('webToon')} onClick={() => handleFilterChange('webToon')}>
+            웹툰
+          </FilterButton>
+          <FilterButton $isActive={selectedFilters.includes('webNovel')} onClick={() => handleFilterChange('webNovel')}>
+            웹소설
+          </FilterButton>
+          <FilterButton $isActive={selectedFilters.includes('comic')} onClick={() => handleFilterChange('comic')}>
+            만화
+          </FilterButton>
+        </FilterContainer>
+      </StickyHeader>
+
       <Grid>
         {books.map((book) => {
           const { id, img, title, type, isExpired, price } = book;
@@ -76,14 +116,15 @@ function Books(): React.ReactElement {
         })}
       </Grid>
 
-      <Observer ref={targetRef}>{isFetchingNextPage && <StatusMessage>Loading more...</StatusMessage>}</Observer>
+      <Observer ref={targetRef}>{isFetchingNextPage && <StatusMessage>목록 불러오는 중...</StatusMessage>}</Observer>
       <ScrollToTopButton />
     </PageLayout>
   );
 }
 
-const { black, white, green500, blue500, orange500 } = colors;
-const { unit4, unit8, unit12, fontWeightBold, fontWeightSemiBold } = typhography;
+const { black, white, green500, blue500, orange500, grey200, grey900, grey600 } = colors;
+const { unit4, unit8, unit12, unit20, fontWeightBold, fontWeightSemiBold } = typhography;
+const { priority } = zIndex;
 
 const getTypeLabel = (type: IBookType): string => {
   switch (type) {
@@ -94,7 +135,7 @@ const getTypeLabel = (type: IBookType): string => {
     case 'comic':
       return '만화';
     default:
-      return type;
+      return '';
   }
 };
 
@@ -110,6 +151,48 @@ const getTypeColor = (type: IBookType): string => {
       return '';
   }
 };
+
+const StickyHeader = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: ${priority};
+  background-color: ${white};
+  padding: ${unit20} 0;
+  border-bottom: 1px solid ${grey200};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: ${unit20};
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+
+const FilterContainer = styled.div`
+  display: flex;
+  gap: ${unit8};
+  align-items: center;
+`;
+
+interface IActiveUI {
+  $isActive: boolean;
+}
+
+const FilterButton = styled.button<IActiveUI>`
+  padding: 6px 12px;
+  border-radius: 20px;
+  ${({ $isActive }: IActiveUI): RuleSet<IActiveUI> => css`
+    border: 1px solid ${$isActive ? 'transparent' : black};
+    background-color: ${$isActive ? black : white};
+    color: ${$isActive ? white : grey900};
+  `}
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: ${({ $isActive }: IActiveUI): string => ($isActive ? black : grey200)};
+  }
+`;
 
 const Grid = styled.div`
   display: grid;
@@ -177,7 +260,7 @@ const BookTitle = styled.h3`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: ${colors.grey900};
+  color: ${grey900};
 `;
 
 const BookPrice = styled.span`
@@ -189,8 +272,8 @@ const ExpiredBadge = styled.span`
   display: inline-block;
   margin-top: ${unit4};
   padding: 2px 6px;
-  background-color: ${colors.grey200};
-  color: ${colors.grey600};
+  background-color: ${grey200};
+  color: ${grey600};
   font-size: 11px;
   border-radius: 4px;
   width: fit-content;
@@ -199,7 +282,7 @@ const ExpiredBadge = styled.span`
 const StatusMessage = styled.div`
   text-align: center;
   padding: 20px;
-  color: ${colors.grey600};
+  color: ${grey600};
   font-size: 14px;
 `;
 

@@ -22,7 +22,7 @@ export interface IWebNovel extends IBook {
   days: DayType;
 }
 
-export type IBookType = IComic['type'] | IWebtoon['type'] | IWebNovel['type'];
+export type IBookType = 'comic' | 'webToon' | 'webNovel';
 
 export interface IBookDetail extends IBook {
   desc: string;
@@ -37,5 +37,5 @@ export interface IBookError {
 export interface IBookListReqParams {
   page: number;
   limit: number;
-  filter?: IBookDetail['type'];
+  filter?: string;
 }

@@ -17,7 +17,7 @@ export const booksQueryKey = {
 export const useGetBookListQuery = (
   payload: IBookListReqParams,
 ): UseInfiniteQueryResult<InfiniteData<Array<IComic | IWebNovel | IWebtoon>>, IBookError> => {
-  const { filter, page, limit } = payload;
+  const { filter, limit } = payload;
   return useInfiniteQuery({
     queryKey: [booksQueryKey.list, filter],
     queryFn: async ({ pageParam }) => {
@@ -31,14 +31,13 @@ export const useGetBookListQuery = (
     },
     getNextPageParam: (lastPage, allPages) => {
       const resData = lastPage as Array<IComic | IWebNovel | IWebtoon>;
-      // limit보다 적게 왔으면 더 이상 데이터가 없는 것으로 판단
       const isEmpty: boolean = !resData || resData.length === 0 || resData.length < limit;
       if (isEmpty) return undefined;
 
-      return allPages.length + 1; // 다음 페이지 번호 반환
+      return allPages.length + 1;
     },
     placeholderData: keepPreviousData,
-    initialPageParam: 1, // 초기 페이지 1로 고정
+    initialPageParam: 1,
   });
 };
 
