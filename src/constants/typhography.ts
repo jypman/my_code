@@ -14,6 +14,8 @@ const typhography = {
   fontWeightMedium: 500,
   fontWeightSemiBold: 600,
   fontWeightBold: 700,
+  fontWeightExtraBold: 800,
+  fontWeightMaxBold: 900,
 
   layoutPadding: '4%',
 };
