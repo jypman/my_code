@@ -20,23 +20,25 @@ export const useGetBookListQuery = (
   const { filter, page, limit } = payload;
   return useInfiniteQuery({
     queryKey: [booksQueryKey.list, filter],
-    queryFn: ({ pageParam }) => {
+    queryFn: async ({ pageParam }) => {
       const param: IBookListReqParams = {
         ...payload,
         page: pageParam,
         limit,
       };
-      return getBookList(param);
+      const res = await getBookList(param);
+      return handleResInQueryFn(res);
     },
-    getNextPageParam: (lastPage) => {
+    getNextPageParam: (lastPage, allPages) => {
       const resData = lastPage as Array<IComic | IWebNovel | IWebtoon>;
+      // limit보다 적게 왔으면 더 이상 데이터가 없는 것으로 판단
       const isEmpty: boolean = !resData || resData.length === 0 || resData.length < limit;
       if (isEmpty) return undefined;
 
-      return page + 1;
+      return allPages.length + 1; // 다음 페이지 번호 반환
     },
     placeholderData: keepPreviousData,
-    initialPageParam: page,
+    initialPageParam: 1, // 초기 페이지 1로 고정
   });
 };
 

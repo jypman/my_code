@@ -40,3 +40,15 @@ export interface IBottomSheetStore extends IBottomSheetContent, IVisibleUI {
   showBottomSheet: (content: IBottomSheetContent) => void;
   hideBottomSheet: () => void;
 }
+
+export interface IUseIntersectionObserverProps {
+  threshold?: number;
+  root?: Element | null;
+  rootMargin?: string;
+  enabled?: boolean;
+}
+
+export interface IUseIntersectionObserverResult {
+  targetRef: React.RefObject<HTMLDivElement | null>;
+  inView: boolean;
+}

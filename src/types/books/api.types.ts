@@ -22,9 +22,11 @@ export interface IWebNovel extends IBook {
   days: DayType;
 }
 
+export type IBookType = IComic['type'] | IWebtoon['type'] | IWebNovel['type'];
+
 export interface IBookDetail extends IBook {
   desc: string;
-  type: IComic['type'] | IWebtoon['type'] | IWebNovel['type'];
+  type: IBookType;
 }
 
 export interface IBookError {

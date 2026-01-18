@@ -3,12 +3,12 @@ import type { DayType, IBookDetail, IBook, IComic, IWebtoon, IWebNovel } from '@
 
 const generateBooks = (): Array<IComic | IWebtoon | IWebNovel> => {
   const days: DayType[] = ['월', '화', '수', '목', '금', '토', '일'];
-  const totalBooks = 50;
+  const totalBooks = 100;
 
   const books = Array.from({ length: totalBooks }, (_, i) => {
     const startIndex = i + 1;
     const book: IBook = {
-      id: i.toString(),
+      id: startIndex.toString(),
       title: `테스트 도서 ${startIndex}`,
       img: `https://picsum.photos/200/300?random=${startIndex}`,
       isExpired: startIndex % 5 === 0,
