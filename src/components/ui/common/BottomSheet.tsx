@@ -52,7 +52,7 @@ const BottomSheetContainer = styled.div.withConfig({ shouldForwardProp: (prop) =
     `}
 `;
 
-const BottomSheetWrap = styled.div<IVisibleUI>`
+const BottomSheetWrap = styled.div.withConfig({ shouldForwardProp: (prop) => prop !== 'isShow' })<IVisibleUI>`
   display: flex;
   flex-direction: column;
   position: absolute;
