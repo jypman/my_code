@@ -29,6 +29,10 @@ const TYPE_VARIANTS = {
       backgroundColor: grey300,
     },
   },
+  disabled: {
+    color: grey50,
+    backgroundColor: grey300,
+  },
 };
 
 const SIZE_VARIANTS = {
@@ -65,8 +69,8 @@ const ButtonComponent = styled.button.withConfig({
     color 0.1s ease;
   font-weight: ${fontWeightSemiBold};
   line-height: 26px;
-  ${({ variant = 'primary', size = 'medium' }: Props): RuleSet<Props> => css`
-    ${TYPE_VARIANTS[variant]}
+  ${({ variant = 'primary', size = 'medium', disabled = false }: Props): RuleSet<Props> => css`
+    ${disabled ? TYPE_VARIANTS.disabled : TYPE_VARIANTS[variant]}
     ${SIZE_VARIANTS[size]}
   `}
 `;

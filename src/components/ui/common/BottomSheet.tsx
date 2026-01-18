@@ -95,7 +95,7 @@ const Title = styled.strong`
 
 const ContentWrapper = styled.div`
   overflow-y: scroll;
-  padding: 0 ${layoutPadding} 112px;
+  padding: 0 ${layoutPadding} 20px;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   scrollbar-width: none;

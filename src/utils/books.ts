@@ -1,4 +1,5 @@
 import type { IBookType } from '@/types/books/api.types';
+import type { PaymentMethodType } from '@/types/books/index.types';
 import colors from '@/constants/colors';
 
 const { green500, blue500, orange500 } = colors;
@@ -28,3 +29,16 @@ export const getTypeColor = (type: IBookType): string => {
       return '';
   }
 };
+
+export function getPaymentMethod(method: PaymentMethodType): string {
+  switch (method) {
+    case 'c':
+      return '카드 결제';
+    case 'p':
+      return '포인트';
+    case 'a':
+      return '자동이체';
+    default:
+      return '';
+  }
+}

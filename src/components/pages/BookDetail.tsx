@@ -7,18 +7,29 @@ import typhography from '@/constants/typhography';
 import devices from '@/constants/devices';
 import { getTypeLabel, getTypeColor } from '@/utils/books';
 import type { IBookType, DayType } from '@/types/books/api.types';
+import { useBottomSheetStore } from '@/hooks/store/useUIStore';
 
 import PageLayout from '@/components/ui/common/PageLayout';
+import Button from '@/components/ui/common/Button';
+import PaymentMethodList from '@/components/ui/books/PaymentMethodList';
 
 interface BookDetailProps {
   id: string;
 }
 
 function BookDetail({ id }: BookDetailProps): React.ReactElement {
+  const { showBottomSheet } = useBottomSheetStore();
   const { data: book } = useGetBookDetailQuery(id);
 
   const { img, title, type, price, desc } = book || {};
   const days: undefined | DayType = book && 'days' in book ? book.days : undefined;
+
+  const showPaymentMethod = (): void => {
+    showBottomSheet({
+      content: <PaymentMethodList />,
+      title: '결제 수단을 선택해주세요',
+    });
+  };
 
   return (
     <PageLayout>
@@ -37,6 +48,10 @@ function BookDetail({ id }: BookDetailProps): React.ReactElement {
             <PriceLabel>가격</PriceLabel>
             <PriceValue>{price?.toLocaleString()}원</PriceValue>
           </PriceWrapper>
+
+          <Button variant="primary" size="large" onClick={showPaymentMethod}>
+            구매하기
+          </Button>
 
           <Description>
             <DescTitle>작품 소개</DescTitle>
