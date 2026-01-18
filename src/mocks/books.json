@@ -2,7 +2,7 @@
   {
     "id": "1",
     "title": "테스트 도서 1",
-    "img": "https://picsum.photos/200/300?random=1",
+    "img": "https://picsum.photos/seed/1/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 2000,
@@ -11,7 +11,7 @@
   {
     "id": "2",
     "title": "테스트 도서 2",
-    "img": "https://picsum.photos/200/300?random=2",
+    "img": "https://picsum.photos/seed/2/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 3000,
@@ -21,7 +21,7 @@
   {
     "id": "3",
     "title": "테스트 도서 3",
-    "img": "https://picsum.photos/200/300?random=3",
+    "img": "https://picsum.photos/seed/3/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 4000,
@@ -31,7 +31,7 @@
   {
     "id": "4",
     "title": "테스트 도서 4",
-    "img": "https://picsum.photos/200/300?random=4",
+    "img": "https://picsum.photos/seed/4/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 5000,
@@ -40,7 +40,7 @@
   {
     "id": "5",
     "title": "테스트 도서 5",
-    "img": "https://picsum.photos/200/300?random=5",
+    "img": "https://picsum.photos/seed/5/200/300",
     "type": "webNovel",
     "isExpired": true,
     "price": 6000,
@@ -50,7 +50,7 @@
   {
     "id": "6",
     "title": "테스트 도서 6",
-    "img": "https://picsum.photos/200/300?random=6",
+    "img": "https://picsum.photos/seed/6/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 7000,
@@ -60,7 +60,7 @@
   {
     "id": "7",
     "title": "테스트 도서 7",
-    "img": "https://picsum.photos/200/300?random=7",
+    "img": "https://picsum.photos/seed/7/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 8000,
@@ -69,7 +69,7 @@
   {
     "id": "8",
     "title": "테스트 도서 8",
-    "img": "https://picsum.photos/200/300?random=8",
+    "img": "https://picsum.photos/seed/8/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 9000,
@@ -79,7 +79,7 @@
   {
     "id": "9",
     "title": "테스트 도서 9",
-    "img": "https://picsum.photos/200/300?random=9",
+    "img": "https://picsum.photos/seed/9/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 10000,
@@ -89,7 +89,7 @@
   {
     "id": "10",
     "title": "테스트 도서 10",
-    "img": "https://picsum.photos/200/300?random=10",
+    "img": "https://picsum.photos/seed/10/200/300",
     "type": "comic",
     "isExpired": true,
     "price": 1000,
@@ -98,7 +98,7 @@
   {
     "id": "11",
     "title": "테스트 도서 11",
-    "img": "https://picsum.photos/200/300?random=11",
+    "img": "https://picsum.photos/seed/11/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 2000,
@@ -108,7 +108,7 @@
   {
     "id": "12",
     "title": "테스트 도서 12",
-    "img": "https://picsum.photos/200/300?random=12",
+    "img": "https://picsum.photos/seed/12/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 3000,
@@ -118,7 +118,7 @@
   {
     "id": "13",
     "title": "테스트 도서 13",
-    "img": "https://picsum.photos/200/300?random=13",
+    "img": "https://picsum.photos/seed/13/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 4000,
@@ -127,7 +127,7 @@
   {
     "id": "14",
     "title": "테스트 도서 14",
-    "img": "https://picsum.photos/200/300?random=14",
+    "img": "https://picsum.photos/seed/14/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 5000,
@@ -137,7 +137,7 @@
   {
     "id": "15",
     "title": "테스트 도서 15",
-    "img": "https://picsum.photos/200/300?random=15",
+    "img": "https://picsum.photos/seed/15/200/300",
     "type": "webToon",
     "isExpired": true,
     "price": 6000,
@@ -147,7 +147,7 @@
   {
     "id": "16",
     "title": "테스트 도서 16",
-    "img": "https://picsum.photos/200/300?random=16",
+    "img": "https://picsum.photos/seed/16/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 7000,
@@ -156,7 +156,7 @@
   {
     "id": "17",
     "title": "테스트 도서 17",
-    "img": "https://picsum.photos/200/300?random=17",
+    "img": "https://picsum.photos/seed/17/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 8000,
@@ -166,7 +166,7 @@
   {
     "id": "18",
     "title": "테스트 도서 18",
-    "img": "https://picsum.photos/200/300?random=18",
+    "img": "https://picsum.photos/seed/18/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 9000,
@@ -176,7 +176,7 @@
   {
     "id": "19",
     "title": "테스트 도서 19",
-    "img": "https://picsum.photos/200/300?random=19",
+    "img": "https://picsum.photos/seed/19/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 10000,
@@ -185,7 +185,7 @@
   {
     "id": "20",
     "title": "테스트 도서 20",
-    "img": "https://picsum.photos/200/300?random=20",
+    "img": "https://picsum.photos/seed/20/200/300",
     "type": "webNovel",
     "isExpired": true,
     "price": 1000,
@@ -195,7 +195,7 @@
   {
     "id": "21",
     "title": "테스트 도서 21",
-    "img": "https://picsum.photos/200/300?random=21",
+    "img": "https://picsum.photos/seed/21/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 2000,
@@ -205,7 +205,7 @@
   {
     "id": "22",
     "title": "테스트 도서 22",
-    "img": "https://picsum.photos/200/300?random=22",
+    "img": "https://picsum.photos/seed/22/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 3000,
@@ -214,7 +214,7 @@
   {
     "id": "23",
     "title": "테스트 도서 23",
-    "img": "https://picsum.photos/200/300?random=23",
+    "img": "https://picsum.photos/seed/23/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 4000,
@@ -224,7 +224,7 @@
   {
     "id": "24",
     "title": "테스트 도서 24",
-    "img": "https://picsum.photos/200/300?random=24",
+    "img": "https://picsum.photos/seed/24/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 5000,
@@ -234,7 +234,7 @@
   {
     "id": "25",
     "title": "테스트 도서 25",
-    "img": "https://picsum.photos/200/300?random=25",
+    "img": "https://picsum.photos/seed/25/200/300",
     "type": "comic",
     "isExpired": true,
     "price": 6000,
@@ -243,7 +243,7 @@
   {
     "id": "26",
     "title": "테스트 도서 26",
-    "img": "https://picsum.photos/200/300?random=26",
+    "img": "https://picsum.photos/seed/26/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 7000,
@@ -253,7 +253,7 @@
   {
     "id": "27",
     "title": "테스트 도서 27",
-    "img": "https://picsum.photos/200/300?random=27",
+    "img": "https://picsum.photos/seed/27/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 8000,
@@ -263,7 +263,7 @@
   {
     "id": "28",
     "title": "테스트 도서 28",
-    "img": "https://picsum.photos/200/300?random=28",
+    "img": "https://picsum.photos/seed/28/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 9000,
@@ -272,7 +272,7 @@
   {
     "id": "29",
     "title": "테스트 도서 29",
-    "img": "https://picsum.photos/200/300?random=29",
+    "img": "https://picsum.photos/seed/29/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 10000,
@@ -282,7 +282,7 @@
   {
     "id": "30",
     "title": "테스트 도서 30",
-    "img": "https://picsum.photos/200/300?random=30",
+    "img": "https://picsum.photos/seed/30/200/300",
     "type": "webToon",
     "isExpired": true,
     "price": 1000,
@@ -292,7 +292,7 @@
   {
     "id": "31",
     "title": "테스트 도서 31",
-    "img": "https://picsum.photos/200/300?random=31",
+    "img": "https://picsum.photos/seed/31/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 2000,
@@ -301,7 +301,7 @@
   {
     "id": "32",
     "title": "테스트 도서 32",
-    "img": "https://picsum.photos/200/300?random=32",
+    "img": "https://picsum.photos/seed/32/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 3000,
@@ -311,7 +311,7 @@
   {
     "id": "33",
     "title": "테스트 도서 33",
-    "img": "https://picsum.photos/200/300?random=33",
+    "img": "https://picsum.photos/seed/33/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 4000,
@@ -321,7 +321,7 @@
   {
     "id": "34",
     "title": "테스트 도서 34",
-    "img": "https://picsum.photos/200/300?random=34",
+    "img": "https://picsum.photos/seed/34/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 5000,
@@ -330,7 +330,7 @@
   {
     "id": "35",
     "title": "테스트 도서 35",
-    "img": "https://picsum.photos/200/300?random=35",
+    "img": "https://picsum.photos/seed/35/200/300",
     "type": "webNovel",
     "isExpired": true,
     "price": 6000,
@@ -340,7 +340,7 @@
   {
     "id": "36",
     "title": "테스트 도서 36",
-    "img": "https://picsum.photos/200/300?random=36",
+    "img": "https://picsum.photos/seed/36/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 7000,
@@ -350,7 +350,7 @@
   {
     "id": "37",
     "title": "테스트 도서 37",
-    "img": "https://picsum.photos/200/300?random=37",
+    "img": "https://picsum.photos/seed/37/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 8000,
@@ -359,7 +359,7 @@
   {
     "id": "38",
     "title": "테스트 도서 38",
-    "img": "https://picsum.photos/200/300?random=38",
+    "img": "https://picsum.photos/seed/38/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 9000,
@@ -369,7 +369,7 @@
   {
     "id": "39",
     "title": "테스트 도서 39",
-    "img": "https://picsum.photos/200/300?random=39",
+    "img": "https://picsum.photos/seed/39/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 10000,
@@ -379,7 +379,7 @@
   {
     "id": "40",
     "title": "테스트 도서 40",
-    "img": "https://picsum.photos/200/300?random=40",
+    "img": "https://picsum.photos/seed/40/200/300",
     "type": "comic",
     "isExpired": true,
     "price": 1000,
@@ -388,7 +388,7 @@
   {
     "id": "41",
     "title": "테스트 도서 41",
-    "img": "https://picsum.photos/200/300?random=41",
+    "img": "https://picsum.photos/seed/41/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 2000,
@@ -398,7 +398,7 @@
   {
     "id": "42",
     "title": "테스트 도서 42",
-    "img": "https://picsum.photos/200/300?random=42",
+    "img": "https://picsum.photos/seed/42/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 3000,
@@ -408,7 +408,7 @@
   {
     "id": "43",
     "title": "테스트 도서 43",
-    "img": "https://picsum.photos/200/300?random=43",
+    "img": "https://picsum.photos/seed/43/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 4000,
@@ -417,7 +417,7 @@
   {
     "id": "44",
     "title": "테스트 도서 44",
-    "img": "https://picsum.photos/200/300?random=44",
+    "img": "https://picsum.photos/seed/44/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 5000,
@@ -427,7 +427,7 @@
   {
     "id": "45",
     "title": "테스트 도서 45",
-    "img": "https://picsum.photos/200/300?random=45",
+    "img": "https://picsum.photos/seed/45/200/300",
     "type": "webToon",
     "isExpired": true,
     "price": 6000,
@@ -437,7 +437,7 @@
   {
     "id": "46",
     "title": "테스트 도서 46",
-    "img": "https://picsum.photos/200/300?random=46",
+    "img": "https://picsum.photos/seed/46/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 7000,
@@ -446,7 +446,7 @@
   {
     "id": "47",
     "title": "테스트 도서 47",
-    "img": "https://picsum.photos/200/300?random=47",
+    "img": "https://picsum.photos/seed/47/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 8000,
@@ -456,7 +456,7 @@
   {
     "id": "48",
     "title": "테스트 도서 48",
-    "img": "https://picsum.photos/200/300?random=48",
+    "img": "https://picsum.photos/seed/48/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 9000,
@@ -466,7 +466,7 @@
   {
     "id": "49",
     "title": "테스트 도서 49",
-    "img": "https://picsum.photos/200/300?random=49",
+    "img": "https://picsum.photos/seed/49/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 10000,
@@ -475,7 +475,7 @@
   {
     "id": "50",
     "title": "테스트 도서 50",
-    "img": "https://picsum.photos/200/300?random=50",
+    "img": "https://picsum.photos/seed/50/200/300",
     "type": "webNovel",
     "isExpired": true,
     "price": 1000,
@@ -485,7 +485,7 @@
   {
     "id": "51",
     "title": "테스트 도서 51",
-    "img": "https://picsum.photos/200/300?random=51",
+    "img": "https://picsum.photos/seed/51/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 2000,
@@ -495,7 +495,7 @@
   {
     "id": "52",
     "title": "테스트 도서 52",
-    "img": "https://picsum.photos/200/300?random=52",
+    "img": "https://picsum.photos/seed/52/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 3000,
@@ -504,7 +504,7 @@
   {
     "id": "53",
     "title": "테스트 도서 53",
-    "img": "https://picsum.photos/200/300?random=53",
+    "img": "https://picsum.photos/seed/53/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 4000,
@@ -514,7 +514,7 @@
   {
     "id": "54",
     "title": "테스트 도서 54",
-    "img": "https://picsum.photos/200/300?random=54",
+    "img": "https://picsum.photos/seed/54/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 5000,
@@ -524,7 +524,7 @@
   {
     "id": "55",
     "title": "테스트 도서 55",
-    "img": "https://picsum.photos/200/300?random=55",
+    "img": "https://picsum.photos/seed/55/200/300",
     "type": "comic",
     "isExpired": true,
     "price": 6000,
@@ -533,7 +533,7 @@
   {
     "id": "56",
     "title": "테스트 도서 56",
-    "img": "https://picsum.photos/200/300?random=56",
+    "img": "https://picsum.photos/seed/56/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 7000,
@@ -543,7 +543,7 @@
   {
     "id": "57",
     "title": "테스트 도서 57",
-    "img": "https://picsum.photos/200/300?random=57",
+    "img": "https://picsum.photos/seed/57/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 8000,
@@ -553,7 +553,7 @@
   {
     "id": "58",
     "title": "테스트 도서 58",
-    "img": "https://picsum.photos/200/300?random=58",
+    "img": "https://picsum.photos/seed/58/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 9000,
@@ -562,7 +562,7 @@
   {
     "id": "59",
     "title": "테스트 도서 59",
-    "img": "https://picsum.photos/200/300?random=59",
+    "img": "https://picsum.photos/seed/59/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 10000,
@@ -572,7 +572,7 @@
   {
     "id": "60",
     "title": "테스트 도서 60",
-    "img": "https://picsum.photos/200/300?random=60",
+    "img": "https://picsum.photos/seed/60/200/300",
     "type": "webToon",
     "isExpired": true,
     "price": 1000,
@@ -582,7 +582,7 @@
   {
     "id": "61",
     "title": "테스트 도서 61",
-    "img": "https://picsum.photos/200/300?random=61",
+    "img": "https://picsum.photos/seed/61/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 2000,
@@ -591,7 +591,7 @@
   {
     "id": "62",
     "title": "테스트 도서 62",
-    "img": "https://picsum.photos/200/300?random=62",
+    "img": "https://picsum.photos/seed/62/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 3000,
@@ -601,7 +601,7 @@
   {
     "id": "63",
     "title": "테스트 도서 63",
-    "img": "https://picsum.photos/200/300?random=63",
+    "img": "https://picsum.photos/seed/63/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 4000,
@@ -611,7 +611,7 @@
   {
     "id": "64",
     "title": "테스트 도서 64",
-    "img": "https://picsum.photos/200/300?random=64",
+    "img": "https://picsum.photos/seed/64/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 5000,
@@ -620,7 +620,7 @@
   {
     "id": "65",
     "title": "테스트 도서 65",
-    "img": "https://picsum.photos/200/300?random=65",
+    "img": "https://picsum.photos/seed/65/200/300",
     "type": "webNovel",
     "isExpired": true,
     "price": 6000,
@@ -630,7 +630,7 @@
   {
     "id": "66",
     "title": "테스트 도서 66",
-    "img": "https://picsum.photos/200/300?random=66",
+    "img": "https://picsum.photos/seed/66/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 7000,
@@ -640,7 +640,7 @@
   {
     "id": "67",
     "title": "테스트 도서 67",
-    "img": "https://picsum.photos/200/300?random=67",
+    "img": "https://picsum.photos/seed/67/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 8000,
@@ -649,7 +649,7 @@
   {
     "id": "68",
     "title": "테스트 도서 68",
-    "img": "https://picsum.photos/200/300?random=68",
+    "img": "https://picsum.photos/seed/68/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 9000,
@@ -659,7 +659,7 @@
   {
     "id": "69",
     "title": "테스트 도서 69",
-    "img": "https://picsum.photos/200/300?random=69",
+    "img": "https://picsum.photos/seed/69/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 10000,
@@ -669,7 +669,7 @@
   {
     "id": "70",
     "title": "테스트 도서 70",
-    "img": "https://picsum.photos/200/300?random=70",
+    "img": "https://picsum.photos/seed/70/200/300",
     "type": "comic",
     "isExpired": true,
     "price": 1000,
@@ -678,7 +678,7 @@
   {
     "id": "71",
     "title": "테스트 도서 71",
-    "img": "https://picsum.photos/200/300?random=71",
+    "img": "https://picsum.photos/seed/71/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 2000,
@@ -688,7 +688,7 @@
   {
     "id": "72",
     "title": "테스트 도서 72",
-    "img": "https://picsum.photos/200/300?random=72",
+    "img": "https://picsum.photos/seed/72/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 3000,
@@ -698,7 +698,7 @@
   {
     "id": "73",
     "title": "테스트 도서 73",
-    "img": "https://picsum.photos/200/300?random=73",
+    "img": "https://picsum.photos/seed/73/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 4000,
@@ -707,7 +707,7 @@
   {
     "id": "74",
     "title": "테스트 도서 74",
-    "img": "https://picsum.photos/200/300?random=74",
+    "img": "https://picsum.photos/seed/74/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 5000,
@@ -717,7 +717,7 @@
   {
     "id": "75",
     "title": "테스트 도서 75",
-    "img": "https://picsum.photos/200/300?random=75",
+    "img": "https://picsum.photos/seed/75/200/300",
     "type": "webToon",
     "isExpired": true,
     "price": 6000,
@@ -727,7 +727,7 @@
   {
     "id": "76",
     "title": "테스트 도서 76",
-    "img": "https://picsum.photos/200/300?random=76",
+    "img": "https://picsum.photos/seed/76/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 7000,
@@ -736,7 +736,7 @@
   {
     "id": "77",
     "title": "테스트 도서 77",
-    "img": "https://picsum.photos/200/300?random=77",
+    "img": "https://picsum.photos/seed/77/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 8000,
@@ -746,7 +746,7 @@
   {
     "id": "78",
     "title": "테스트 도서 78",
-    "img": "https://picsum.photos/200/300?random=78",
+    "img": "https://picsum.photos/seed/78/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 9000,
@@ -756,7 +756,7 @@
   {
     "id": "79",
     "title": "테스트 도서 79",
-    "img": "https://picsum.photos/200/300?random=79",
+    "img": "https://picsum.photos/seed/79/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 10000,
@@ -765,7 +765,7 @@
   {
     "id": "80",
     "title": "테스트 도서 80",
-    "img": "https://picsum.photos/200/300?random=80",
+    "img": "https://picsum.photos/seed/80/200/300",
     "type": "webNovel",
     "isExpired": true,
     "price": 1000,
@@ -775,7 +775,7 @@
   {
     "id": "81",
     "title": "테스트 도서 81",
-    "img": "https://picsum.photos/200/300?random=81",
+    "img": "https://picsum.photos/seed/81/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 2000,
@@ -785,7 +785,7 @@
   {
     "id": "82",
     "title": "테스트 도서 82",
-    "img": "https://picsum.photos/200/300?random=82",
+    "img": "https://picsum.photos/seed/82/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 3000,
@@ -794,7 +794,7 @@
   {
     "id": "83",
     "title": "테스트 도서 83",
-    "img": "https://picsum.photos/200/300?random=83",
+    "img": "https://picsum.photos/seed/83/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 4000,
@@ -804,7 +804,7 @@
   {
     "id": "84",
     "title": "테스트 도서 84",
-    "img": "https://picsum.photos/200/300?random=84",
+    "img": "https://picsum.photos/seed/84/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 5000,
@@ -814,7 +814,7 @@
   {
     "id": "85",
     "title": "테스트 도서 85",
-    "img": "https://picsum.photos/200/300?random=85",
+    "img": "https://picsum.photos/seed/85/200/300",
     "type": "comic",
     "isExpired": true,
     "price": 6000,
@@ -823,7 +823,7 @@
   {
     "id": "86",
     "title": "테스트 도서 86",
-    "img": "https://picsum.photos/200/300?random=86",
+    "img": "https://picsum.photos/seed/86/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 7000,
@@ -833,7 +833,7 @@
   {
     "id": "87",
     "title": "테스트 도서 87",
-    "img": "https://picsum.photos/200/300?random=87",
+    "img": "https://picsum.photos/seed/87/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 8000,
@@ -843,7 +843,7 @@
   {
     "id": "88",
     "title": "테스트 도서 88",
-    "img": "https://picsum.photos/200/300?random=88",
+    "img": "https://picsum.photos/seed/88/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 9000,
@@ -852,7 +852,7 @@
   {
     "id": "89",
     "title": "테스트 도서 89",
-    "img": "https://picsum.photos/200/300?random=89",
+    "img": "https://picsum.photos/seed/89/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 10000,
@@ -862,7 +862,7 @@
   {
     "id": "90",
     "title": "테스트 도서 90",
-    "img": "https://picsum.photos/200/300?random=90",
+    "img": "https://picsum.photos/seed/90/200/300",
     "type": "webToon",
     "isExpired": true,
     "price": 1000,
@@ -872,7 +872,7 @@
   {
     "id": "91",
     "title": "테스트 도서 91",
-    "img": "https://picsum.photos/200/300?random=91",
+    "img": "https://picsum.photos/seed/91/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 2000,
@@ -881,7 +881,7 @@
   {
     "id": "92",
     "title": "테스트 도서 92",
-    "img": "https://picsum.photos/200/300?random=92",
+    "img": "https://picsum.photos/seed/92/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 3000,
@@ -891,7 +891,7 @@
   {
     "id": "93",
     "title": "테스트 도서 93",
-    "img": "https://picsum.photos/200/300?random=93",
+    "img": "https://picsum.photos/seed/93/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 4000,
@@ -901,7 +901,7 @@
   {
     "id": "94",
     "title": "테스트 도서 94",
-    "img": "https://picsum.photos/200/300?random=94",
+    "img": "https://picsum.photos/seed/94/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 5000,
@@ -910,7 +910,7 @@
   {
     "id": "95",
     "title": "테스트 도서 95",
-    "img": "https://picsum.photos/200/300?random=95",
+    "img": "https://picsum.photos/seed/95/200/300",
     "type": "webNovel",
     "isExpired": true,
     "price": 6000,
@@ -920,7 +920,7 @@
   {
     "id": "96",
     "title": "테스트 도서 96",
-    "img": "https://picsum.photos/200/300?random=96",
+    "img": "https://picsum.photos/seed/96/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 7000,
@@ -930,7 +930,7 @@
   {
     "id": "97",
     "title": "테스트 도서 97",
-    "img": "https://picsum.photos/200/300?random=97",
+    "img": "https://picsum.photos/seed/97/200/300",
     "type": "comic",
     "isExpired": false,
     "price": 8000,
@@ -939,7 +939,7 @@
   {
     "id": "98",
     "title": "테스트 도서 98",
-    "img": "https://picsum.photos/200/300?random=98",
+    "img": "https://picsum.photos/seed/98/200/300",
     "type": "webNovel",
     "isExpired": false,
     "price": 9000,
@@ -949,7 +949,7 @@
   {
     "id": "99",
     "title": "테스트 도서 99",
-    "img": "https://picsum.photos/200/300?random=99",
+    "img": "https://picsum.photos/seed/99/200/300",
     "type": "webToon",
     "isExpired": false,
     "price": 10000,
@@ -959,7 +959,7 @@
   {
     "id": "100",
     "title": "테스트 도서 100",
-    "img": "https://picsum.photos/200/300?random=100",
+    "img": "https://picsum.photos/seed/100/200/300",
     "type": "comic",
     "isExpired": true,
     "price": 1000,
