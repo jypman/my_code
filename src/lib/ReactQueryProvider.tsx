@@ -38,7 +38,7 @@ function ReactQueryProviders({ children }: { children: React.ReactNode }): React
   return (
     <QueryClientProvider client={queryClient as QueryClientType}>
       {children}
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-right" />
     </QueryClientProvider>
   );
 }
