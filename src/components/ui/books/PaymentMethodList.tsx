@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import colors from '@/constants/colors';
 import typhography from '@/constants/typhography';
@@ -16,7 +16,7 @@ const { unit16, fontWeightSemiBold } = typhography;
 
 function PaymentMethodList(): React.ReactElement {
   const router = useRouter();
-  const { hideBottomSheet } = useBottomSheetStore();
+  const { isShow, hideBottomSheet } = useBottomSheetStore();
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethodType | null>(null);
   const methods: PaymentMethodType[] = ['c', 'p', 'a'];
 
@@ -33,6 +33,14 @@ function PaymentMethodList(): React.ReactElement {
       router.push(`/payments/${selectedMethod}`);
     }, 300);
   };
+
+  useEffect(() => {
+    const resetSelectedMethod = (): void => {
+      if (!isShow) setSelectedMethod(null);
+    };
+
+    resetSelectedMethod();
+  }, [isShow]);
 
   return (
     <Container>
