@@ -12,4 +12,5 @@ export interface IUserInfo {
 
 export interface IUserStore extends IUserInfo {
   setUserInfo: (userInfo: IUserInfo) => void;
+  clearUserInfo: () => void;
 }

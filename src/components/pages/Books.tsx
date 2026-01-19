@@ -10,16 +10,17 @@ import colors from '@/constants/colors';
 import typhography from '@/constants/typhography';
 import zIndex from '@/constants/zIndex';
 import { useToastStore } from '@/hooks/store/useUIStore';
-import { useUserStore } from '@/hooks/store/useUserStore';
+import { useUserStore, initialUserInfo } from '@/hooks/store/useUserStore';
 import { getTypeLabel, getTypeColor } from '@/utils/books';
 
 import PageLayout from '@/components/ui/common/PageLayout';
 import Txt from '@/components/ui/common/Txt';
 import ScrollToTopButton from '@/components/ui/common/ScrollToTopButton';
+import Button from '@/components/ui/common/Button';
 
 function Books(): React.ReactElement {
   const { showToast } = useToastStore();
-  const { nickName, point } = useUserStore();
+  const { nickName, point, clearUserInfo, setUserInfo } = useUserStore();
   const router = useRouter();
 
   const [selectedFilters, setSelectedFilters] = useState<IBookType[]>([]);
@@ -79,7 +80,13 @@ function Books(): React.ReactElement {
 
   useEffect(scrollToTop, [selectedFilters]);
 
-  const hasUserInfo = !!nickName;
+  const handleLogout = (): void => {
+    setUserInfo(initialUserInfo);
+    clearUserInfo();
+    router.refresh();
+  };
+
+  const hasUserInfo: boolean = !!nickName;
 
   return (
     <PageLayout>
@@ -101,6 +108,9 @@ function Books(): React.ReactElement {
                   {point.toLocaleString()}P
                 </Txt>
               </PointInfo>
+              <LogoutButton size="medium" variant="secondary" onClick={handleLogout}>
+                로그아웃
+              </LogoutButton>
             </UserInfo>
           )}
         </HeaderTop>
@@ -302,6 +312,13 @@ const StatusMessage = styled.div`
 const Observer = styled.div`
   height: 20px;
   margin: 20px 0;
+`;
+
+const LogoutButton = styled(Button)`
+  font-size: 12px;
+  padding: 4px 8px;
+  height: auto;
+  margin-top: 4px;
 `;
 
 export default Books;
