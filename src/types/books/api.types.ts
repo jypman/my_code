@@ -1,0 +1,37 @@
+export type DayType = '월' | '화' | '수' | '목' | '금' | '토' | '일';
+
+export interface IBook {
+  id: string;
+  title: string;
+  img: string;
+  isExpired: boolean;
+  price: number;
+  desc: string;
+}
+
+export interface IComic extends IBook {
+  type: 'comic';
+}
+
+export interface IWebtoon extends IBook {
+  type: 'webToon';
+  days: DayType;
+}
+
+export interface IWebNovel extends IBook {
+  type: 'webNovel';
+  days: DayType;
+}
+
+export type IBookType = 'comic' | 'webToon' | 'webNovel';
+
+export interface IBookError {
+  errorCode: string;
+  errorMessage: string;
+}
+
+export interface IBookListReqParams {
+  page: number;
+  limit: number;
+  filter?: string;
+}

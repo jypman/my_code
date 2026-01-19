@@ -1,7 +1,5 @@
-export default function Home(): React.ReactElement {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+import Books from '@/components/pages/Books';
+
+export default function BooksPage(): React.ReactElement {
+  return <Books />;
 }
