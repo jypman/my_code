@@ -34,9 +34,9 @@ export const handlers = [
     if (!book) {
       const errorObj = {
         errorCode: 'BOOK_NOT_FOUND',
-        message: '해당하는 도서를 찾을 수 없습니다.',
+        errorMessage: '해당하는 도서를 찾을 수 없습니다.',
       };
-      return new HttpResponse(errorObj, { status: 404 });
+      return HttpResponse.json(errorObj, { status: 404 });
     }
 
     return HttpResponse.json(book);
