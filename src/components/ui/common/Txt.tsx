@@ -10,7 +10,7 @@ function Txt(props: Props): React.ReactElement {
   return <TxtComponent {...props} />;
 }
 
-const { fontWeightMaxBold, fontWeightExtraBold, fontWeightBold, fontWeightMedium, fontWeightRegular } = typhography;
+const { fontWeightMaxBold, fontWeightExtraBold, fontWeightBold, fontWeightRegular } = typhography;
 
 const TYPOGRAPH_VARIANT = {
   h1: {

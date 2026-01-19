@@ -12,6 +12,7 @@ const eslintConfig = defineConfig([
       'react/jsx-no-useless-fragment': 'warn',
       'import/no-duplicates': 'error',
       'jsx-a11y/alt-text': 'error',
+      'no-unused-vars': 'off',
     },
   },
   {
@@ -20,7 +21,7 @@ const eslintConfig = defineConfig([
       '@typescript-eslint/explicit-function-return-type': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-unused-vars': [
-        'off',
+        'warn',
         {
           argsIgnorePattern: '^_',
         },
