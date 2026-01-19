@@ -62,7 +62,7 @@ function Books(): React.ReactElement {
       return;
     }
 
-    router.push(`/${id}`);
+    router.push(`/books/${id}`);
   };
 
   const scrollToTop = (): void => {
