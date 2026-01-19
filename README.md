@@ -44,7 +44,7 @@ Next.js App Router 환경에서 `styled-components`를 사용하기 위해 `Styl
 모달 / 토스트 / 바텀시트 UI의 노출 로직, 로그인 사용자 정보와 같은 전역 상태 관리를 위해 Zustand를 사용
 
 - **모달 / 토스트 / 바텀시트 UI의 상태 관리**: 상태 변경 로직을 `useUIStore`의 Store 내부 액션(`showModal`, `showToast` 등)으로 캡슐화하여 컴포넌트에서의 사용을 단순화
-- **Persist Middleware**: `useUserStore`에서 `sessionStorage`와 연동하여 새로고침 후에도 로그인 상태가 유지되도록 구현
+- **Persisting store data**: `useUserStore`에서 `sessionStorage`와 연동하여 새로고침 후에도 로그인 상태가 유지되도록 구현
 
 ### 5. 재사용성을 고려한 코드 작성
 
@@ -63,7 +63,7 @@ Next.js App Router 환경에서 `styled-components`를 사용하기 위해 `Styl
   - 예: type이 'comic'인 경우 만화 단행본이므로 연재 요일을 나타내는 days 속성에 접근할 수 없도록 방지.
   - 반대로 type이 'webToon'인 웹툰의 경우 days 속성이 반드시 존재함을 보장
 
-### 7. husky
+### 7. Husky
 
 - 코드 품질 검사 자동화
   - "Git Hooks 제어 도구인 Husky를 도입하여 커밋 단계에서 린트(Lint)와 type 검사, 커밋 메세지 포맷팅 검사를 자동화하여, 일관된 코드 스타일 유지 및 잠재적인 에러 사전 방지 도모
