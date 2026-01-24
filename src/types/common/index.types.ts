@@ -19,13 +19,6 @@ export interface IToastContent {
   message: React.ReactNode;
   visibleTime?: number;
 }
-
-export interface ITopModalContent {
-  content: React.ReactNode;
-  title: React.ReactNode;
-  className?: string;
-}
-
 export interface IModalStore extends IModalContent, IVisibleUI {
   showModal: (params: IModalContent) => void;
   hideModal: () => void;
