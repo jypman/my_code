@@ -7,7 +7,8 @@ import {
   type InfiniteData,
 } from '@tanstack/react-query';
 import type { IBookListReqParams, IBookError, IComic, IWebNovel, IWebtoon } from '@/types/books/api.types';
-import { getBookDetail, getBookList, handleResInQueryFn } from '@/actions/books';
+import { getBookDetail, getBookList } from '@/actions/books';
+import { handleResInQueryFn } from '@/utils/api';
 
 export const booksQueryKey = {
   list: 'bookList',

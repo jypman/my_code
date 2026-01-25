@@ -1,5 +1,4 @@
 import StyledComponentsRegistry from '@/lib/StyledComponentRegistry';
-import MSWRegistry from '@/lib/MSWRegistry';
 import UIProviders from '@/providers/UIProviders';
 import ReactQueryProviders from '@/lib/ReactQueryRegistry';
 
@@ -13,9 +12,7 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <UIProviders>
-            <MSWRegistry>
-              <ReactQueryProviders>{children}</ReactQueryProviders>
-            </MSWRegistry>
+            <ReactQueryProviders>{children}</ReactQueryProviders>
           </UIProviders>
         </StyledComponentsRegistry>
       </body>
