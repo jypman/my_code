@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import styled, { css, type RuleSet } from 'styled-components';
 import { useRouter } from 'next/navigation';
 import { useGetBookListQuery } from '@/hooks/useBooksQuery';
@@ -25,14 +25,11 @@ function Books(): React.ReactElement {
 
   const [selectedFilters, setSelectedFilters] = useState<IBookType[]>([]);
 
-  const payload: IBookListReqParams = useMemo<IBookListReqParams>(
-    () => ({
-      page: 1,
-      limit: 20,
-      filter: selectedFilters.join('|'),
-    }),
-    [selectedFilters],
-  );
+  const payload: IBookListReqParams = {
+    page: 1,
+    limit: 20,
+    filter: selectedFilters.join('|'),
+  };
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetBookListQuery(payload);
 
