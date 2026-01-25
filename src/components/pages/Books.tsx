@@ -128,10 +128,11 @@ function Books(): React.ReactElement {
         {books.map((book) => {
           const { id, img, title, type, isExpired, price } = book;
           const isDays = 'days' in book;
+          const imgLoadingType = books.length <= payload.limit ? 'eager' : 'lazy';
           return (
             <BookCard key={id} onClick={() => handleNextPage(id, isExpired)}>
               <ImageWrapper>
-                <BookImage src={img} alt={title} loading="lazy" />
+                <BookImage src={img} alt={title} loading={imgLoadingType} />
                 {isDays && <DayBadge>{book.days}요일 연재</DayBadge>}
               </ImageWrapper>
               <BookInfo>
