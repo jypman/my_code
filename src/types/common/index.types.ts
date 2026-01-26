@@ -1,3 +1,15 @@
+import type { QueryFunction } from '@tanstack/react-query';
+export interface IPrefetchQueryItem {
+  queryKey: string[];
+  queryFn: QueryFunction;
+}
+
+export interface IPrefetchInfiniteQueryItem {
+  queryKey: string[];
+  queryFn: (context: { pageParam: number }) => Promise<unknown>;
+  initialPageParam: number;
+}
+
 export interface IVisibleUI {
   isShow: boolean;
 }
