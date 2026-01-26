@@ -92,7 +92,6 @@ const ListItem = styled.li`
   border-bottom: 1px solid ${grey100};
   cursor: pointer;
   transition: background-color 0.2s;
-  box-sizing: border-box;
 
   &:last-child {
     border-bottom: none;

@@ -63,7 +63,6 @@ const Label = styled.label.withConfig({ shouldForwardProp: (prop) => prop !== 'i
 const InputComponent = styled.input.withConfig({ shouldForwardProp: (prop) => prop !== 'isError' })<TextFieldProps>`
   width: 100%;
   padding: 0 18px;
-  box-sizing: border-box;
   font-size: 15px;
   line-height: 48px;
   margin: 0;
