@@ -18,9 +18,18 @@ export default function Error({ error }: ErrorProps): React.ReactNode {
     const { errorMessage } = error;
     if (typeof errorMessage !== 'string') return;
 
+    const onClickConfirm = (): void => {
+      if (window.history.length === 0) {
+        router.push('/');
+        return;
+      }
+
+      router.back();
+    };
+
     showModal({
       title: errorMessage,
-      onClickConfirm: router.back,
+      onClickConfirm,
     });
   };
 
