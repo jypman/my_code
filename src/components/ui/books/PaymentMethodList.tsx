@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import colors from '@/constants/colors';
@@ -11,27 +10,28 @@ import { getPaymentMethod } from '@/utils/books';
 
 import Button from '@/components/ui/common/Button';
 
+interface PaymentMethodListProps {
+  onClickPaymentMethod?: (method: PaymentMethodType) => void;
+  onNextStep: (method: PaymentMethodType) => void;
+}
+
+const methods: PaymentMethodType[] = ['c', 'p', 'a'];
 const { grey100, grey800, blue500 } = colors;
 const { unit16, fontWeightSemiBold } = typhography;
 
-function PaymentMethodList(): React.ReactElement {
-  const router = useRouter();
-  const { isShow, hideBottomSheet } = useBottomSheetStore();
+function PaymentMethodList({ onClickPaymentMethod, onNextStep }: PaymentMethodListProps): React.ReactElement {
+  const { isShow } = useBottomSheetStore();
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethodType | null>(null);
-  const methods: PaymentMethodType[] = ['c', 'p', 'a'];
 
   const handleSelect = (method: PaymentMethodType): void => {
     setSelectedMethod(method);
+    onClickPaymentMethod?.(method);
   };
 
   const handlePayment = (): void => {
     if (!selectedMethod) return;
 
-    hideBottomSheet();
-
-    setTimeout(() => {
-      router.push(`/payments/${selectedMethod}`);
-    }, 300);
+    onNextStep(selectedMethod);
   };
 
   useEffect(() => {
@@ -95,10 +95,6 @@ const ListItem = styled.li`
 
   &:last-child {
     border-bottom: none;
-  }
-
-  &:hover {
-    background-color: ${grey100};
   }
 `;
 
