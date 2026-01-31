@@ -10,7 +10,7 @@ pattern="^(feat|fix|chore|refactor|test): .+$"
 # 3. 검사
 if ! echo "$commit_msg" | grep -qE "$pattern"; then
   echo "[알림] 커밋 메시지 형식이 올바르지 않습니다."
-  echo "👉 예시: feat/APTI-4994: test"
+  echo "👉 예시: feat: 작품 목록 페이지 렌더링 최적화 test"
   
   exit 1
 fi
