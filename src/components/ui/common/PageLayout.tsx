@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import colors from '@/constants/colors';
 import typhography from '@/constants/typhography';
+import devices from '@/constants/devices';
 
 function PageLayout({ children }: { children: React.ReactNode }): React.ReactElement {
   return (
@@ -11,9 +12,10 @@ function PageLayout({ children }: { children: React.ReactNode }): React.ReactEle
 }
 
 const { layoutPadding } = typhography;
+const { tablet } = devices;
 
 const PageLayoutContainer = styled.div`
-  max-width: 650px;
+  max-width: ${tablet}px;
   width: 100%;
   padding: 0 ${layoutPadding};
   margin: 0 auto;

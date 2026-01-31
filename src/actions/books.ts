@@ -1,34 +1,9 @@
-import type { AxiosError, AxiosResponse } from 'axios';
+'use server';
+
 import { books } from '@/api/books';
 import { booksHttp } from '@/lib/axios-instance/books';
 import type { IComic, IWebtoon, IWebNovel, IBookError, IBookListReqParams } from '@/types/books/api.types';
-
-const ERROR_RES: IBookError = {
-  errorCode: 'UNKNOWN_ERROR',
-  errorMessage: '정의되지 않은 오류입니다.',
-};
-
-const handleApiRes = <T>(res: AxiosResponse<T>): T => {
-  const { data: responseData } = res;
-  console.log('response data:', responseData);
-
-  return responseData;
-};
-
-const handleApiErrorRes = (err: unknown): IBookError => {
-  const error = err as AxiosError<IBookError>;
-  const errorData = error.response?.data || ERROR_RES;
-  console.error('error data:', errorData);
-  return errorData;
-};
-
-export const handleResInQueryFn = <T extends object>(res: T | IBookError): never | T => {
-  if ('errorCode' in res) {
-    throw res;
-  }
-
-  return res;
-};
+import { handleApiRes, handleApiErrorRes } from '@/utils/api';
 
 const { list, detail } = books;
 

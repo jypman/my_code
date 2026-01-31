@@ -1,3 +1,15 @@
+import type { QueryFunction } from '@tanstack/react-query';
+export interface IPrefetchQueryItem {
+  queryKey: string[];
+  queryFn: QueryFunction;
+}
+
+export interface IPrefetchInfiniteQueryItem {
+  queryKey: string[];
+  queryFn: (context: { pageParam: number }) => Promise<unknown>;
+  initialPageParam: number;
+}
+
 export interface IVisibleUI {
   isShow: boolean;
 }
@@ -19,13 +31,6 @@ export interface IToastContent {
   message: React.ReactNode;
   visibleTime?: number;
 }
-
-export interface ITopModalContent {
-  content: React.ReactNode;
-  title: React.ReactNode;
-  className?: string;
-}
-
 export interface IModalStore extends IModalContent, IVisibleUI {
   showModal: (params: IModalContent) => void;
   hideModal: () => void;

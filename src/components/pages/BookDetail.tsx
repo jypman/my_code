@@ -1,6 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
+import { useRouter } from 'next/navigation';
 import { useGetBookDetailQuery } from '@/hooks/useBooksQuery';
 import colors from '@/constants/colors';
 import typhography from '@/constants/typhography';
@@ -8,6 +9,7 @@ import devices from '@/constants/devices';
 import { getTypeLabel, getTypeColor } from '@/utils/books';
 import type { IBookType, DayType } from '@/types/books/api.types';
 import { useBottomSheetStore } from '@/hooks/store/useUIStore';
+import type { PaymentMethodType } from '@/types/books/index.types';
 
 import PageLayout from '@/components/ui/common/PageLayout';
 import Button from '@/components/ui/common/Button';
@@ -18,15 +20,24 @@ interface BookDetailProps {
 }
 
 function BookDetail({ id }: BookDetailProps): React.ReactElement {
-  const { showBottomSheet } = useBottomSheetStore();
+  const { showBottomSheet, hideBottomSheet } = useBottomSheetStore();
+  const router = useRouter();
   const { data: book } = useGetBookDetailQuery(id);
 
   const { img, title, type, price, desc } = book || {};
   const days: undefined | DayType = book && 'days' in book ? book.days : undefined;
 
+  const moveToPaymentPage = (method: PaymentMethodType): void => {
+    hideBottomSheet();
+
+    setTimeout(() => {
+      router.push(`/payments/${method}`);
+    }, 300);
+  };
+
   const showPaymentMethod = (): void => {
     showBottomSheet({
-      content: <PaymentMethodList />,
+      content: <PaymentMethodList onNextStep={moveToPaymentPage} />,
       title: '결제 수단을 선택해주세요',
     });
   };

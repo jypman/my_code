@@ -130,7 +130,6 @@ const Container = styled.div`
   align-items: center;
   min-height: 60vh;
   width: 100%;
-  max-width: 400px;
   margin: 0 auto;
 `;
 

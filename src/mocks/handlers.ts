@@ -5,7 +5,7 @@ import type { IComic, IWebtoon, IWebNovel } from '@/types/books/api.types';
 const allBooks = booksData as Array<IComic | IWebtoon | IWebNovel>;
 
 export const handlers = [
-  http.get('/books', ({ request }) => {
+  http.get('http://localhost:3000/books', ({ request }) => {
     const startPage = 1;
     const defaultLimit = 20;
     const url = new URL(request.url);
@@ -27,7 +27,7 @@ export const handlers = [
     return HttpResponse.json(paginatedBooks);
   }),
 
-  http.get('/books/:id', ({ params }) => {
+  http.get('http://localhost:3000/books/:id', ({ params }) => {
     const { id } = params;
     const book = allBooks.find((b) => b.id === id);
 
