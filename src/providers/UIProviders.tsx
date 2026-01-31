@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { useModalStore, useBottomSheetStore } from '@/hooks/store/useUIStore';
+import type { PageDirectionType } from '@/types/common/index.types';
 import BottomSheet from '@/components/ui/common/BottomSheet';
 import Modal from '@/components/ui/common/Modal';
 import Toast from '@/components/ui/common/Toast';
@@ -16,13 +17,14 @@ const VISIBLE_ANIMATION_TIME_MS = 300;
 
 function UIProvider({ children }: ICommonProviderProps): React.ReactElement {
   const { isShow: isShowModal } = useModalStore();
-  const { isShow: isShowBottomSheet, hideBottomSheet } = useBottomSheetStore();
-  const duplicatedHistoryCountRef = useRef<number>(0);
+  const { isShow: isShowBottomSheet, hideBottomSheet, showBottomSheet } = useBottomSheetStore();
+
+  const currentIndexRef = useRef<number>(0);
+  const directionRef = useRef<PageDirectionType>('initial');
 
   const clearHistoryHash = (hash: string): void => {
     if (window.location.hash.includes(hash)) {
-      window.history.replaceState(null, '', window.location.pathname + window.location.search);
-      duplicatedHistoryCountRef.current = duplicatedHistoryCountRef.current + 1;
+      window.history.back();
     }
   };
 
@@ -48,12 +50,39 @@ function UIProvider({ children }: ICommonProviderProps): React.ReactElement {
     }
   };
 
+  const initCurrentIndex = (): void => {
+    if (!window.history.state?.index) {
+      const state = { index: 0 };
+      window.history.replaceState(state, '');
+      currentIndexRef.current = 0;
+    } else {
+      currentIndexRef.current = window.history.state.index;
+    }
+  };
+
+  const updateCurrentIndex = (event: PopStateEvent): void => {
+    const newIndex = event.state?.index ?? 0;
+    const currentIndex = currentIndexRef.current;
+
+    if (newIndex > currentIndex) {
+      directionRef.current = 'forward';
+    } else if (newIndex < currentIndex) {
+      directionRef.current = 'back';
+    }
+
+    currentIndexRef.current = newIndex;
+  };
+
   useEffect(toggleModal, [isShowModal]);
 
   useEffect(toggleBottomSheet, [isShowBottomSheet]);
 
+  useEffect(initCurrentIndex, []);
+
   useEffect(() => {
-    const handlePopState = (): void => {
+    const handlePopState = (event: PopStateEvent): void => {
+      updateCurrentIndex(event);
+
       if (isShowModal) {
         window.history.forward();
         return;
@@ -64,9 +93,18 @@ function UIProvider({ children }: ICommonProviderProps): React.ReactElement {
         return;
       }
 
-      if (duplicatedHistoryCountRef.current > 0) {
-        window.history.go(-1 * duplicatedHistoryCountRef.current);
-        duplicatedHistoryCountRef.current = 0;
+      if (window.location.hash.includes(MODAL_HASH)) {
+        if (directionRef.current === 'forward') {
+          history.go(1);
+        } else {
+          history.go(-1);
+        }
+        return;
+      }
+
+      if (window.location.hash.includes(BOTTOM_SHEET_HASH)) {
+        showBottomSheet();
+        return;
       }
     };
 
