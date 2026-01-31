@@ -33,7 +33,14 @@ export const useBottomSheetStore = create<IBottomSheetStore>((set) => ({
   content: null,
   title: null,
   className: '',
-  showBottomSheet: ({ content, title = null, className = '' }: IBottomSheetContent): void => {
+  showBottomSheet: (params?: IBottomSheetContent): void => {
+    if (!params) {
+      set({ isShow: true });
+      return;
+    }
+
+    const { content, title = null, className = '' } = params;
+
     set({ isShow: true, content, title, className });
   },
   hideBottomSheet: (): void => {

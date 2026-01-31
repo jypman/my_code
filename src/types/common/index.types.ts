@@ -14,6 +14,8 @@ export interface IVisibleUI {
   isShow: boolean;
 }
 
+export type PageDirectionType = 'forward' | 'back' | 'initial';
+
 export interface IModalContent {
   title?: React.ReactNode;
   desc?: React.ReactNode;
@@ -22,7 +24,7 @@ export interface IModalContent {
 }
 
 export interface IBottomSheetContent {
-  content: React.ReactNode;
+  content?: React.ReactNode;
   title?: React.ReactNode;
   className?: string;
 }
@@ -42,7 +44,7 @@ export interface IToastStore extends IToastContent, IVisibleUI {
 }
 
 export interface IBottomSheetStore extends IBottomSheetContent, IVisibleUI {
-  showBottomSheet: (content: IBottomSheetContent) => void;
+  showBottomSheet: (content?: IBottomSheetContent) => void;
   hideBottomSheet: () => void;
 }
 
