@@ -9,6 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "lint:cache": "eslint . --cache --cache-location node_modules/.cache/eslint",
+    "lint:clean": "rm -rf node_modules/.cache/eslint && yarn lint",
     "typecheck": "tsc --noEmit",
     "typecheck:i": "tsc --noEmit --incremental",
     "typecheck:watch": "tsc --noEmit --incremental -w"
