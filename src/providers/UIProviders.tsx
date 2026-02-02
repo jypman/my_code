@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import { useModalStore, useBottomSheetStore } from '@/hooks/store/useUIStore';
-import { useSessionStorageStore } from '@/hooks/store/useSessionStorageStore';
 import BottomSheet from '@/components/ui/common/BottomSheet';
 import Modal from '@/components/ui/common/Modal';
 import Toast from '@/components/ui/common/Toast';
@@ -13,61 +12,55 @@ interface ICommonProviderProps {
 
 const MODAL_HASH = 'openModal';
 const BOTTOM_SHEET_HASH = 'openBottomSheet';
-const VISIBLE_ANIMATION_TIME_MS = 300;
 
 function UIProvider({ children }: ICommonProviderProps): React.ReactElement {
   const { isShow: isShowModal } = useModalStore();
   const { isShow: isShowBottomSheet, hideBottomSheet } = useBottomSheetStore();
-  const { duplicatedHistoryCount, setDuplicatedHistoryCount, clearDuplicatedHistoryCount } = useSessionStorageStore();
 
-  const clearHistoryHash = (hash: string): void => {
-    if (window.location.hash.includes(hash)) {
-      window.history.replaceState(null, '', window.location.pathname + window.location.search);
-      setDuplicatedHistoryCount(duplicatedHistoryCount + 1);
+  const addHashToUrl = (hashToAdd: string): void => {
+    const currentHash = window.location.hash.slice(1);
+
+    if (currentHash.includes(hashToAdd)) {
+      return;
+    }
+
+    const newHash = currentHash ? `#${currentHash}&${hashToAdd}` : `#${hashToAdd}`;
+
+    window.history.pushState({ hash: hashToAdd }, '', window.location.pathname + window.location.search + newHash);
+  };
+
+  const removeHashFromUrl = (hashToRemove: string): void => {
+    if (window.location.hash.includes(hashToRemove)) {
+      window.history.back();
     }
   };
 
   const toggleModal = (): void => {
     if (isShowModal) {
-      window.location.hash = MODAL_HASH;
+      addHashToUrl(MODAL_HASH);
     } else {
-      clearHistoryHash(MODAL_HASH);
+      removeHashFromUrl(MODAL_HASH);
     }
   };
 
   const toggleBottomSheet = (): void => {
     if (isShowBottomSheet) {
-      window.location.hash = BOTTOM_SHEET_HASH;
+      addHashToUrl(BOTTOM_SHEET_HASH);
     } else {
-      clearHistoryHash(BOTTOM_SHEET_HASH);
-      setTimeout(() => {
-        const modalContent =
-          document.querySelector('.modal .infinite_scroll_container') ||
-          document.querySelector('.modal .modal_contents');
-        if (modalContent) modalContent.scrollTo(0, 0);
-      }, VISIBLE_ANIMATION_TIME_MS);
+      removeHashFromUrl(BOTTOM_SHEET_HASH);
     }
   };
 
-  useEffect(toggleModal, [isShowModal]);
-
-  useEffect(toggleBottomSheet, [isShowBottomSheet]);
-
   useEffect(() => {
     const handlePopState = (): void => {
-      if (isShowModal) {
+      const currentHash = window.location.hash;
+
+      if (!currentHash.includes(MODAL_HASH) && isShowModal) {
         window.history.forward();
-        return;
       }
 
-      if (isShowBottomSheet) {
+      if (!currentHash.includes(BOTTOM_SHEET_HASH) && isShowBottomSheet) {
         hideBottomSheet();
-        return;
-      }
-
-      if (duplicatedHistoryCount > 0) {
-        window.history.go(-1 * duplicatedHistoryCount);
-        clearDuplicatedHistoryCount();
       }
     };
 
@@ -76,7 +69,10 @@ function UIProvider({ children }: ICommonProviderProps): React.ReactElement {
     return (): void => {
       window.removeEventListener('popstate', handlePopState);
     };
-  }, [isShowModal, isShowBottomSheet, duplicatedHistoryCount]);
+  }, [isShowModal, isShowBottomSheet]);
+
+  useEffect(toggleModal, [isShowModal]);
+  useEffect(toggleBottomSheet, [isShowBottomSheet]);
 
   return (
     <>
