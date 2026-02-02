@@ -62,12 +62,3 @@ export interface IInputValidation {
   value: string;
   isError: boolean;
 }
-
-export interface ISessionStorageState {
-  duplicatedHistoryCount: number;
-}
-
-export interface ISessionStorageStore extends ISessionStorageState {
-  setDuplicatedHistoryCount: (duplicatedHistoryCount: number) => void;
-  clearDuplicatedHistoryCount: () => void;
-}
