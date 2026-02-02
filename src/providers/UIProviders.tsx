@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useModalStore, useBottomSheetStore } from '@/hooks/store/useUIStore';
-import type { PageDirectionType } from '@/types/common/index.types';
+import { useSessionStorageStore } from '@/hooks/store/useSessionStorageStore';
 import BottomSheet from '@/components/ui/common/BottomSheet';
 import Modal from '@/components/ui/common/Modal';
 import Toast from '@/components/ui/common/Toast';
@@ -17,14 +17,13 @@ const VISIBLE_ANIMATION_TIME_MS = 300;
 
 function UIProvider({ children }: ICommonProviderProps): React.ReactElement {
   const { isShow: isShowModal } = useModalStore();
-  const { isShow: isShowBottomSheet, hideBottomSheet, showBottomSheet } = useBottomSheetStore();
-
-  const currentIndexRef = useRef<number>(0);
-  const directionRef = useRef<PageDirectionType>('initial');
+  const { isShow: isShowBottomSheet, hideBottomSheet } = useBottomSheetStore();
+  const { duplicatedHistoryCount, setDuplicatedHistoryCount, clearDuplicatedHistoryCount } = useSessionStorageStore();
 
   const clearHistoryHash = (hash: string): void => {
     if (window.location.hash.includes(hash)) {
-      window.history.back();
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      setDuplicatedHistoryCount(duplicatedHistoryCount + 1);
     }
   };
 
@@ -50,39 +49,12 @@ function UIProvider({ children }: ICommonProviderProps): React.ReactElement {
     }
   };
 
-  const initCurrentIndex = (): void => {
-    if (!window.history.state?.index) {
-      const state = { index: 0 };
-      window.history.replaceState(state, '');
-      currentIndexRef.current = 0;
-    } else {
-      currentIndexRef.current = window.history.state.index;
-    }
-  };
-
-  const updateCurrentIndex = (event: PopStateEvent): void => {
-    const newIndex = event.state?.index ?? 0;
-    const currentIndex = currentIndexRef.current;
-
-    if (newIndex > currentIndex) {
-      directionRef.current = 'forward';
-    } else if (newIndex < currentIndex) {
-      directionRef.current = 'back';
-    }
-
-    currentIndexRef.current = newIndex;
-  };
-
   useEffect(toggleModal, [isShowModal]);
 
   useEffect(toggleBottomSheet, [isShowBottomSheet]);
 
-  useEffect(initCurrentIndex, []);
-
   useEffect(() => {
-    const handlePopState = (event: PopStateEvent): void => {
-      updateCurrentIndex(event);
-
+    const handlePopState = (): void => {
       if (isShowModal) {
         window.history.forward();
         return;
@@ -93,18 +65,9 @@ function UIProvider({ children }: ICommonProviderProps): React.ReactElement {
         return;
       }
 
-      if (window.location.hash.includes(MODAL_HASH)) {
-        if (directionRef.current === 'forward') {
-          history.go(1);
-        } else {
-          history.go(-1);
-        }
-        return;
-      }
-
-      if (window.location.hash.includes(BOTTOM_SHEET_HASH)) {
-        showBottomSheet();
-        return;
+      if (duplicatedHistoryCount > 0) {
+        window.history.go(-1 * duplicatedHistoryCount);
+        clearDuplicatedHistoryCount();
       }
     };
 
@@ -113,7 +76,7 @@ function UIProvider({ children }: ICommonProviderProps): React.ReactElement {
     return (): void => {
       window.removeEventListener('popstate', handlePopState);
     };
-  }, [isShowModal, isShowBottomSheet]);
+  }, [isShowModal, isShowBottomSheet, duplicatedHistoryCount]);
 
   return (
     <>
