@@ -2,4 +2,4 @@ echo '🚀 타입체크중...✨'
 yarn typecheck:i
 
 echo '🚀 Lint 검사중...✨'
-yarn lint:cache
+yarn lint:staged
